@@ -1,22 +1,15 @@
 import React from "react";
-import { Container } from "react-bootstrap";
-
-import '../../component/Styles/home.css';
-import NavigationAdmin from "../../component/admine/NavigationAdmin";
+import '../../component/Styles/Admin.css';
 import AddMovis from "../../component/admine/AddMovis";
-
+import NavigationAdmin from "../../component/admine/NavigationAdmin";
 const AdminPage = () => {
 
     return (
-        <div className="admin" style={{ marginTop: "100px" }}>
-            <Container className="adminFB">
+        <div className="adminFB">
+            <div className="adminAll container">
                 <NavigationAdmin />
-                <div className="">
-                    <div className="addProductAdmin">
-                        <AddMovis />
-                    </div>
-                </div>
-            </Container>
+                <AddMovis />
+            </div>
         </div>
     );
 };

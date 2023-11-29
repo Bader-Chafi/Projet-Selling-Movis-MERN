@@ -1,7 +1,6 @@
 import React from 'react';
 import SubTitle from '../Utility/SubTitle';
 import { Container, Row } from 'react-bootstrap';
-import Paginate from '../Utility/Paginate';
 import fetchData from '../Utility/GetCategory';
 import { baseUrl } from '../Utility/Constant';
 import CategoryCard from './CategoryCard';
@@ -26,11 +25,10 @@ const AllCategory = () => {
                         />
                     ))}
                 </Row>
-                <Paginate />
+                
             </Container>
             {/* <CardProductContainer /> */}
         </div>
-
     )
 };
 

@@ -1,0 +1,7 @@
+THE Command you are using to control the order from the code
+npm run start:dev 
+npm run start:
+node seeder.js -deleteUsersnode 
+seeder.js -d
+node seeder.js -i
+

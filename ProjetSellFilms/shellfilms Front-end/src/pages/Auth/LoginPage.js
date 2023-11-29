@@ -1,52 +1,135 @@
-import React from 'react';
-import {
-    MDBContainer,
-    MDBRow,
-    MDBCol,
-    MDBInput
-}
-    from 'mdb-react-ui-kit';
-import '../../component/Styles/login.css'
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+// import { baseUrl } from '../../component/Utility/Constant'
+import axios from 'axios';
 
 const LoginPage = () => {
-    return (
-        <MDBContainer className="my-5 p-5 gradient-form">
-            <MDBRow>
-                <MDBCol col='6' className="mb-5">
-                    <div className="d-flex flex-column ms-5">
-                        <div className="text-center">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                                style={{ width: '185px' }} alt="logo" />
-                            <h4 className="mt-1 mb-5 pb-1">We are 1337 Movis</h4>
-                        </div>
-                        <p className='text-primary'>Please login to your account</p>
-                        <MDBInput wrapperClass='mb-4' size='lg' label='Email address' id='form1' type='email' />
-                        <MDBInput wrapperClass='mb-4' size='lg' label='Password' id='form2' type='password' />
-                        <div className="text-center pt-1 mb-5 pb-1">
-                            <button className='btn btn-primary mb-4 w-100'>
-                                <Link to="/log" className="href text-light">Signin</Link>
-                            </button>
-                            <Link to="#!" className="text-muted">Forgot password?</Link><br/>
-                            <Link to="/admin" className="text-muted">Go To the page admin</Link>
-                        </div>
-                        <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
-                            <Link to='/signin' className="mb-0 text-dark">Don't have an account?</Link>
+    const [logindata, setLoginData] = useState({
+        email: '',
+        password: '',
+    })
+    const [loginNotif, setLoginNotif] = useState(false);
+    const [log, setLog] = useState('');
+    const showNotifications = () => {
+        setLoginNotif(true);
+    };
+    useEffect(() => {
+        const notificationTimeout = setTimeout(() => {
+            setLoginNotif(false);
+        }, 3000);
+        return () => clearTimeout(notificationTimeout);
+    }, [loginNotif]);
 
+    const [error, setError] = useState('')
+    const handelSubmit = async (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+
+        try {
+            const response = await axios.post(`http://localhost:8000/api/v1/login`, logindata, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response) {
+                if (response.data.msg === 'OK') {
+                    setLog('Your login was successful');
+                    setError('');
+                    setLoginData({
+                        email: '',
+                        password: '',
+                    });
+                    showNotifications();
+                    console.log(response.data)
+                }
+            }
+        } catch (err) {
+            if (err.response.data.msg === 'NO') {
+                console.log(err.response.data.msg)
+                setError('Your email address or password is incorrect');
+            }
+        }
+    };
+    const handelInputLogin = (e) => {
+        const { name, value } = e.target;
+        setLoginData({
+            ...logindata,
+            [name]: value,
+        })
+    }
+    return (
+        // < !--Section: Design Block-- 
+        <section className="background-radial-gradient overflow-hidden text-center LoginFB">
+            <div className="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+                <div className="row gx-lg-5 align-items-center mb-5">
+                    <div className="col-lg-6 mb-5 mb-lg-0 text-center" style={{ 'z-index': "10" }}>
+                        <h1 className="my-5 display-5 fw-bold ls-tight" style={{ "color": "hsl(218, 81%, 95%)" }}>
+                            The best Web Site <br />
+                            <span style={{ "color": "hsl(218, 81%, 75%)" }}>Register For Watch enyTime enyWher</span>
+                        </h1>
+                        <p className="mb-4 opacity-70" style={{ "color": "hsl(218, 81%, 85%)" }}>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                            Temporibus, expedita iusto veniam atque, magni tempora mollitia
+                            dolorum consequatur nulla, neque debitis eos reprehenderit quasi
+                            ab ipsum nisi dolorem modi. Quos?
+                        </p>
+                    </div>
+
+                    <div className="col-lg-6 mb-5 mb-lg-0 position-relative">
+                        <div id="radius-shape-1" className="position-absolute rounded-circle shadow-5-strong"></div>
+                        <div id="radius-shape-2" className="position-absolute shadow-5-strong"></div>
+                        <div className="card bg-glass">
+                            <div className="card-body px-4 py-5 px-md-5">
+                                <form className='d-flex row'>
+                                    {/* <!-- Email input --> */}
+                                    <div className="form-outline mb-4">
+                                        <label className="form-label" for="email">Email address</label>
+                                        <input value={logindata.email} type="email" id="email" onChange={handelInputLogin} name='email' className="form-control" />
+                                    </div>
+
+                                    {/* <!-- Password input --> */}
+                                    <div className="form-outline mb-4">
+                                        <label className="form-label" for="password">Password</label>
+                                        <input value={logindata.password} type="password" id="password" onChange={handelInputLogin} name='password' className="form-control" />
+                                    </div>
+                                    {/* success and error */}
+                                    {error && <div className="alert alert-danger">!!!!!{error}!!!!!</div>}
+                                    {loginNotif && <div className='alert alert-success'> {log} </div>}
+
+                                    {/* <!-- Submit button --> */}
+                                    <button type="submit" onClick={handelSubmit} className="btn btn-primary btn-block text-center mb-4">
+                                        Login
+                                    </button> <br />
+                                    <Link to='/admin'>go to admin page</Link><br />
+                                    <Link to='/register'>I Don't Have An Account</Link>
+
+
+                                    {/* <!-- Register buttons --> */}
+                                    <div className="text-center">
+                                        <p style={{ "color": 'blue' }}>or sign up with:</p>
+                                        <button type="button" className="btn btn-link btn-floating mx-1">
+                                            <i className="fab fa-facebook-f"></i>
+                                        </button>
+
+                                        <button type="button" className="btn btn-link btn-floating mx-1">
+                                            <i className="fab fa-google"></i>
+                                        </button>
+
+                                        <button type="button" className="btn btn-link btn-floating mx-1">
+                                            <i className="fab fa-twitter"></i>
+                                        </button>
+
+                                        <button type="button" className="btn btn-link btn-floating mx-1">
+                                            <i className="fab fa-github"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </MDBCol>
-                <MDBCol col='6' className="mb-5">
-                    <div className="d-flex flex-column  justify-content-center gradient-custom-2 h-100 mb-4">
-                        <div className="text-white px-3 py-4 p-md-5 mx-md-4">
-                            <h4 className="mb-4">We are more than just a company</h4>
-                            <p className="small mb-0">BMovis is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected ...
-                            </p>
-                        </div>
-                    </div>
-                </MDBCol>
-            </MDBRow>
-        </MDBContainer>
+                </div>
+            </div>
+        </section>
     );
 }
 

@@ -21,7 +21,8 @@ function App() {
           <Route path="/products" element={<ProductPage />} />
           <Route path="all_category" element={<AllCategory />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/ragister" element={<RegisterPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          {/* Other routes */}
           <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </Router>

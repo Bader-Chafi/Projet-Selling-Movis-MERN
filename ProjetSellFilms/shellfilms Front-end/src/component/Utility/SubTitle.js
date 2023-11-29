@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const SubTitle = ({ title, btnTitle, liens }) => {
     
     return (
-        <div className="d-flex justify-content-between py-2">
+        <div className="d-flex justify-content-between py-2 subtitleB">
             <Card.Title className="sub-title">{title}</Card.Title>
             {btnTitle ? (
                 <Button className="shopping-now">

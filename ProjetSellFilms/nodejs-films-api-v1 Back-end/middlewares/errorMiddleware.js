@@ -20,6 +20,7 @@ const sendErrorForProd= (err, res) => {
     return res.status(err.statusCode).json({
         status: err.status,
         message: err.message,
+        error: err,
     });
 }
 

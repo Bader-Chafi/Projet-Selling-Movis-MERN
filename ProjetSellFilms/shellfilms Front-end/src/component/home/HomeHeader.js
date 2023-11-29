@@ -6,9 +6,7 @@ import CardProductContainer from "../Prodacts/CardProductContainner";
 import { baseUrl } from "../Utility/Constant";
 import fetchData from "../Utility/GetCategory";
 
-
-
-const HomeCategory = () => {
+const HomeHeader = () => {
     const [categories, setCategories] = React.useState([]);
     React.useEffect(() => {
         fetchData(`${baseUrl}categories/?limit=5&page=1`, setCategories)
@@ -16,21 +14,29 @@ const HomeCategory = () => {
 
     return (
         <>
-            <Container>
-                <SubTitle liens='/all_category' title='CATEGORY' btnTitle='SHOW MORE' />
-            </Container>
-            <Row className="my-2 d-flex justify-content-between Category_card">
-                {categories.map((category) => (
-                    <CategoryCard
-                        key={category._id}
-                        category_card_text={category.name}
-                        img={category.image}
-                    />
-                ))}
-            </Row>
+            <div className="subtitleB">
+                <Container>
+                    <SubTitle liens='/all_category' title='CATEGORY' btnTitle='SHOW MORE' />
+                </Container>
+            </div>
+            <div className="d-flex justify-content-between Category_card">
+                <Container>
+                    <Row>
+                        {categories.map((category) => (
+                            <CategoryCard
+                                key={category._id}
+                                category_card_text={category.name}
+                                img={category.image}
+                            />
+                        ))}
+                    </Row>
+                </Container>
+            </div>
+
 
             {/* NEW MOVIES */}
             <CardProductContainer
+                liens='/ShopFilms'
                 title="NEW MOVIES"
                 urlapi='films'
                 limit='5'
@@ -39,15 +45,15 @@ const HomeCategory = () => {
 
             {/* HOROR MOVIES */}
             <CardProductContainer
+                liens='/ShopFilms'
                 title="HOROR MOVIES"
                 urlapi='categories/65367d10513326c7007c5334/films'
                 limit='5'
                 page='2'
-                liens='/products'
-                btn_title='Show Me More' />
+                btn_title='Show All Movis' />
         </>
 
     )
 };
 
-export default HomeCategory;
+export default HomeHeader;

@@ -59,12 +59,9 @@ const filmSchema = new mongoose.Schema(
         ratingsAverage: {
             type: Number,
             min: [1, "Rating must be above or equal 1.0"],
-            max: [5, "Rating must be above or equal 5.0"]
-        },
-        ratingsQuantity: {
-            type: Number,
-            default: 0
-        },
+            max: [5, "Rating must be above or equal 5.0"],
+            default: 1.0,
+        }
     },
     { timestamps: true }
 );

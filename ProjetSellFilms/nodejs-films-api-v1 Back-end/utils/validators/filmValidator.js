@@ -13,10 +13,10 @@ exports.getFilmValidator = [
 exports.createfilmValidator = [
     check('title')
         .notEmpty().withMessage("film required")
-        .isLength({ min: 2 }).withMessage("tou short film title"),
+        .isLength({ min: 2 }).withMessage("too short film title"),
     check('description')
         .notEmpty().withMessage("film description required")
-        .isLength({ max: 2000 }).withMessage("tou long film title"),
+        .isLength({ max: 2000 }).withMessage("too long film title"),
     check('sold')
         .optional()
         .isNumeric()

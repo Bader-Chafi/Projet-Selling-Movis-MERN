@@ -1,12 +1,12 @@
-import slide from "../../images/headOffer.png";
+// import slide from "../../images/headOffer.png";
 import "../Styles/home.css";
-
+import { Col } from "react-bootstrap";
 
 const Slider = () => {
   return (
     <>
       <section className="headPG">
-        <div className="titlePG">
+        <Col className="titlePG container">
           <div className="titleP">
             <h1>Sell Movies to Watch, Anytime Anywhere.</h1>
             <p>The search is over! Let Plex help you find the perfect movie to watch tonighta reasonable price for .</p>
@@ -14,8 +14,8 @@ const Slider = () => {
               BUY NOM
             </button>
           </div>
-        </div>
-        <img className="titlePG_image" src={slide} alt="headOffer" />
+        </Col>
+        
       </section>
     </>
   )

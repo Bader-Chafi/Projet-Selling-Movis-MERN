@@ -1,17 +1,32 @@
 const slugify = require("slugify");
 const asyncHandler = require('express-async-handler')
 const ApiError = require('../utils/apiError');
-
+const Film = require('../models/filmModel')
 const filmModel = require("../models/filmModel");
 
 // @DESC  CREATE Films
 // Route POST /api/v1/subcategories
 // @access Privat
 exports.createFilm = asyncHandler(async (req, res) => {
-    console.log(req.body)
     req.body.slug = slugify(req.body.title);
-    const film = await filmModel.create(req.body);
-    res.status(201).json({ data: film })
+    // Create a new film instance with the adjusted file paths
+    const film = new filmModel({
+        title: req.body.title,
+        category: req.body.category,
+        date: req.body.date,
+        section: req.body.section,
+        imageCover: req.body.imageCover.replace("C:\\fakepath\\", ""), // Adjust the path as needed
+        video: req.body.video.replace("C:\\fakepath\\", ""), // Adjust the path as needed
+        price: req.body.price,
+        sold: req.body.sold,
+        description: req.body.description,
+        slug: req.body.slug,
+        // Add other film properties as needed
+    });
+    // Save the film to the database
+    const createdFilm = await film.save();
+
+    res.status(201).json({ data: createdFilm });
 });
 
 // nested route
@@ -92,3 +107,36 @@ exports.deleteFilm = asyncHandler(async (req, res, next) => {
     }
     res.status(200).send(`Film ${id} deleted`);
 })
+
+
+exports.searchFilm = asyncHandler(async (req, res) => {
+    try {
+        //query parameters
+        const { title, category, section, date, pageSize, limit } = req.query;
+        const page = pageSize * 1;
+        const limited = limit * 1;
+
+        // Build the query object dynamically
+        const querySearch = {};
+        if (title) querySearch.title = { $regex: new RegExp(title, 'i') };
+        if (category) querySearch.category = category;
+        if (section) querySearch.section = section;
+        if (date) querySearch.date = date;
+
+        // Calculate the skip value based on the current page and page size
+        const skip = (page - 1) * limited;
+
+        // Perform the search
+        const searchResults = await Film.find(querySearch)
+            .skip(skip)
+            .limit(limited);
+
+        console.log(title, category, section, date);
+
+        // Respond with the search results
+        res.json({ result: searchResults.length, page, data: searchResults });
+    } catch (error) {
+        console.error('Error searching films:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
