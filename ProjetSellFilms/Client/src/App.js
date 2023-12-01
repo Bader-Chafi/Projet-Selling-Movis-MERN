@@ -20,17 +20,23 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/ShopFilms" element={<ShopProducts />} />
-          <Route path="/products" element={<ProductPage />} />
-          <Route path="all_category" element={<AllCategory />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/profile" element={<Profile />} />
-          {/* Other routes */}
+          {/* if the user not login this pages not show for them except homa page */}
           {
-            typeUser === 'Admin' ? <Route path="/admin" element={<AdminPage />} /> : <Route path="/admin" element={<FakeAdmin />} />
+            typeUser && <>
+              <Route path="/ShopFilms" element={<ShopProducts />} />
+              <Route path="/products" element={<ProductPage />} />
+              <Route path="all_category" element={<AllCategory />} />
+              <Route path="/profile" element={<Profile />} />
+            </>
           }
-
+          {/* the all user whith type user not can going to the page admin */}
+          {
+            typeUser === 'Admin' ?
+              <Route path="/admin" element={<AdminPage />} />
+              : <Route path="/admin" element={<FakeAdmin />} />
+          }
         </Routes>
       </Router>
       <Footer />

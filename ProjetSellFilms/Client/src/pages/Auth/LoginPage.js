@@ -9,7 +9,7 @@ const LoginPage = () => {
         password: '',
     });
     const navigate = useNavigate()
-    const [x, setCookies] = useCookies(['access_token']);
+    const [, setCookies] = useCookies(['access_token']);
     const [loginNotif, setLoginNotif] = useState(false);
     const [log, setLog] = useState('');
     const showSuccessNotif = () => {
@@ -54,7 +54,6 @@ const LoginPage = () => {
                 window.localStorage.setItem('user_id', response.data.data._id);
                 window.localStorage.setItem('typeUser', response.data.data.typeUser);
                 showSuccessNotif();
-                console.log(x)
             }
         } catch (err) {
             console.error('Error:', err);
