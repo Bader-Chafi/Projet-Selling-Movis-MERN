@@ -8,7 +8,7 @@ const Profile = () => {
     return (
         <>
             {user ? (
-                <h1 className='text-danger'>Hello {user.userName}</h1>
+                <h1 className='text-danger'>Hello Mr {user.userName}</h1>
             ) : (
                 <p>Loading user data...</p>
             )}

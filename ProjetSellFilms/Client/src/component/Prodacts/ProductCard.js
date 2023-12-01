@@ -1,46 +1,35 @@
 import React from "react";
-import {
-    MDBCard,
-    MDBCardBody,
-    MDBCardImage,
-    MDBCardTitle,
 
-} from "mdb-react-ui-kit";
-import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 const ProductCard = ({ image, name, prix, stars, disc }) => {
     return (
-        <div className="my-2 cardd ">
-            <div style={{'width':'100%'}}>
-                    <MDBCard className="text-light">
-                        <MDBCardImage className="card-image"
-                            src={`http://localhost:8000/api/v1/uploads/${image}`}
-                            position="top"
-                            alt="image"
-                        />
-                        <MDBCardBody className="Product-card-body">
-                            <div className="text-center">
-                                <MDBCardTitle>{name}</MDBCardTitle>
-                            </div>
-                            <div className="d-flex justify-content-between">
-                                <span>Prix</span>
-                                <span>{prix}$$</span>
-                            </div>
-                            <div className="discription text-center text-secondary">
-                                {disc}
-                            </div>
-                            <div className="d-flex justify-content-between total font-weight-bold mt-4">
-                                <Button className="btn btn-info"><Link className="nav-link" to=''>Add To Pnier</Link></Button>
-                                <i className="fa-regular fa-heart"></i>
-                                <span>{stars}<i className="fa-solid fa-star" color="red"></i></span>
-                            </div>
-                        </MDBCardBody>
-                    </MDBCard>
+        <div className="The_product">
+            <div className="Product_card">
+                <div className="Poducat_img">
+                    <img src={image} alt={name} />
+                </div>
+                <div className="Product_Body">
+                    <div className="product_autore">
+                        <h3>NICOLAS ADISON</h3>
+                    </div>
+                    <div className="product_price">
+                        <span>Price :</span>
+                        <span>{prix}</span>
+                    </div>
+                    <div className="product_disc">
+                        {disc}
+                    </div>
+                    <div className="product_button">
+                        <button type="button" className="btn-show">SHOW MORE</button>
+                        <i className="fa-regular fa-heart"></i>
+                        <span className="product_stars">{stars}<i className="fa-solid fa-star" color="red"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div className="Product_title">
+                {name}
             </div>
         </div>
-
-
     )
 }
 

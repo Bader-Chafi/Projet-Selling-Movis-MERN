@@ -16,8 +16,8 @@ function App() {
   const typeUser = window.localStorage.getItem('typeUser');
   return (
     <div className="font">
-      <Navbar />
       <Router>
+      <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />

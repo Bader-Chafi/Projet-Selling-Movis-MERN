@@ -3,22 +3,26 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import { useCookies } from "react-cookie";
 import GetUserInfo from "./GetUser";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [Mobile, setMobile] = useState(true);
   const [cookies, setCookies] = useCookies('access_token');
+  const navigate = useNavigate();
   const removeCokies = () => {
     setCookies('access_token', '');
     window.localStorage.removeItem('user_id', '');
     window.localStorage.removeItem('typeUser', '');
     window.location.reload(false);
+    navigate('/');
   }
   const handleToggle = () => {
     setMobile(!Mobile);
   };
   const [user, setUser] = useState();
   const userid = window.localStorage.getItem("user_id");
-  GetUserInfo(userid, setUser)
+  GetUserInfo(userid, setUser);
+  
   return (
     <header>
       <nav className='container'>
@@ -42,8 +46,8 @@ const Navbar = () => {
               <i className="fa-solid fa-user "></i>
               {user ? (
                 <ul className="user">
-                  <li>{user.userName}</li>
-                  <li>Profile</li>
+                  <li className="nav-item">{user.userName}</li>
+                  <li><Link to="/profile">Profile</Link></li>
                   <li onClick={removeCokies}>LogOut</li>
                 </ul>
               ) : (<p className="loding">Loading user data...</p>)}

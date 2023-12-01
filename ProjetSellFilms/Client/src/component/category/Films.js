@@ -94,7 +94,7 @@ const Films = (limit, page) => {
                         ))}
                     </Nav>
                     {/* Section option */}
-                    <Dropdown className="mx-1" Dropdown>
+                    <Dropdown className="mx-1" >
                         <Dropdown.Toggle style={{ width: '130px' }} variant="light" id="dropdown-basic">
                             Section
                         </Dropdown.Toggle>
@@ -108,7 +108,7 @@ const Films = (limit, page) => {
                         </Dropdown.Menu>
                     </Dropdown>
                     {/* Date option */}
-                    <Dropdown Dropdown>
+                    <Dropdown >
                         <Dropdown.Toggle style={{ width: '130px' }} variant="light" id="dropdown-basic">
                             Date
                         </Dropdown.Toggle>

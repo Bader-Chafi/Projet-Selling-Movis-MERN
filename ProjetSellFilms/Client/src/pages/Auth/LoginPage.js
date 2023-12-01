@@ -67,7 +67,7 @@ const LoginPage = () => {
         <section className="background-radial-gradient overflow-hidden text-center LoginFB">
             <div className="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
                 <div className="row gx-lg-5 align-items-center mb-5">
-                    <div className="col-lg-6 mb-5 mb-lg-0 text-center" style={{ 'z-index': "10" }}>
+                    <div className="col-lg-6 mb-5 mb-lg-0 text-center" style={{ 'zIndex': "10" }}>
                         <h1 className="my-5 display-5 fw-bold ls-tight" style={{ "color": "hsl(218, 81%, 95%)" }}>
                             The best Web Site <br />
                             <span style={{ "color": "hsl(218, 81%, 75%)" }}>Register For Watch enyTime enyWher</span>
@@ -88,13 +88,13 @@ const LoginPage = () => {
                                 <form className='d-flex row'>
                                     {/* <!-- Email input --> */}
                                     <div className="form-outline mb-4">
-                                        <label className="form-label" for="email">Email address</label>
+                                        <label className="form-label" htmlFor="email">Email address</label>
                                         <input value={logindata.email} type="email" id="email" onChange={handelInputLogin} name='email' className="form-control" />
                                     </div>
 
                                     {/* <!-- Password input --> */}
                                     <div className="form-outline mb-4">
-                                        <label className="form-label" for="password">Password</label>
+                                        <label className="form-label" htmlFor="password">Password</label>
                                         <input value={logindata.password} type="password" id="password" onChange={handelInputLogin} name='password' className="form-control" />
                                     </div>
                                     {/* success and error */}
