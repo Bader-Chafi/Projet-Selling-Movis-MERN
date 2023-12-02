@@ -1,8 +1,14 @@
 const express = require('express');
-const { createAdmin } = require('../controllers/adminController');
+const { getAdmin, getAllAdmins } = require('../controllers/adminController');
 
 const router = express.Router();
 
-router.post('/', createAdmin)
+router
+    .route('/:id')
+    .get(getAdmin)
+
+router
+    .route('/')
+    .get(getAllAdmins)
 
 module.exports = router

@@ -7,7 +7,7 @@ const Product = () => {
     const [product, setProduct] = useState();
     GetFilm(id, setProduct)
     return (
-        <div>
+        <div className="Product_Shop">
             {product ? <h1>Hello {product.title}</h1> : <h1>World</h1>}
         </div>
     );
