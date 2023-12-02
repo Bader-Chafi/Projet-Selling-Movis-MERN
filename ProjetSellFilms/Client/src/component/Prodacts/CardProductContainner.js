@@ -22,6 +22,7 @@ const CardProductContainer = ({ urlapi, title, btn_title, liens, limit, page }) 
                         films.map((film) => {
                             return (
                                 <ProductCard key={film._id}
+                                    id={film._id}
                                     image={film.imageCover}
                                     name={film.title}
                                     prix={film.price}

@@ -11,13 +11,14 @@ import AdminPage from "./pages/Admin/AdminPage";
 import AllCategory from "./component/category/AllCategory";
 import FakeAdmin from "./pages/Admin/FakeAdmin";
 import Profile from "./pages/Profile";
+import Product from "./pages/Products/Product";
 
 function App() {
   const typeUser = window.localStorage.getItem('typeUser');
   return (
     <div className="font">
       <Router>
-      <Navbar />
+        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -27,6 +28,7 @@ function App() {
             typeUser && <>
               <Route path="/ShopFilms" element={<ShopProducts />} />
               <Route path="/products" element={<ProductPage />} />
+              <Route path="/profile/:id" element={<Product />} />
               <Route path="all_category" element={<AllCategory />} />
               <Route path="/profile" element={<Profile />} />
             </>

@@ -17,7 +17,7 @@ const HomeHeader = () => {
             <div className="subtitleB">
                 <Container>
                     <SubTitle liens='/all_category' title='CATEGORY' btnTitle='SHOW MORE' />
-                </Container>
+                </Container>    
             </div>
             <div className="d-flex justify-content-between Category_card">
                 <Container>

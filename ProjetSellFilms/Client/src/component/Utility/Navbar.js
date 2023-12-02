@@ -50,7 +50,7 @@ const Navbar = () => {
                   <li><Link to="/profile">Profile</Link></li>
                   <li onClick={removeCokies}>LogOut</li>
                 </ul>
-              ) : (<p className="loding">Loading user data...</p>)}
+              ) : null}
             </div>)
             : (<button><a href='/login'>LogIn Now</a></button>)
           }

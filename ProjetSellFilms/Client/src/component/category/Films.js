@@ -34,7 +34,7 @@ const Films = (limit, page) => {
         fetchData(`${baseUrl}sections`, setSection)
         console.log(page)
         // Perform search when the setserchTitle changes
-        if (serchTitle.trim() !== '' || category !== '' || section !== '' || date !== '' ) {
+        if (serchTitle.trim() !== '' || category !== '' || section !== '' || date !== '') {
             // Call your search API endpoint with the setserchTitle
             axios.get(`${baseUrl}searchfilm?title=${serchTitle}&category=${category}&section=${section}&date=${date}&limit=${10}&page=${2}`)
                 .then(response => {
@@ -125,25 +125,23 @@ const Films = (limit, page) => {
                 </Col >
             </Row >
             {/* search results */}
-            <Container >
-                <Col className="serchResult my-4 d-flex flex-wrap justify-content-between">
-                    {searchResults.length > 0 && page ? (
-                        searchResults.map((serchFilms) => (
-                            <Link to='' key={serchFilms._id}>
-                                <ProductCard
-                                    image={serchFilms.imageCover}
-                                    name={serchFilms.title}
-                                    prix={serchFilms.price}
-                                    stars={serchFilms.ratingsAverage}
-                                    disc={serchFilms.description}
-                                />
-                            </Link>
-                        ))
-                    ) : (
-                        <CardProductContainer urlapi='films' limit="10" page={page} />
-                    )}
-                </Col>
-            </Container>
+            <Col className="serchResult my-4 d-flex flex-wrap justify-content-between">
+                {searchResults.length > 0 && page ? (
+                    searchResults.map((serchFilms) => (
+                        <Link to='' key={serchFilms._id}>
+                            <ProductCard
+                                image={serchFilms.imageCover}
+                                name={serchFilms.title}
+                                prix={serchFilms.price}
+                                stars={serchFilms.ratingsAverage}
+                                disc={serchFilms.description}
+                            />
+                        </Link>
+                    ))
+                ) : (
+                    <CardProductContainer urlapi='films' limit="10" page={page} />
+                )}
+            </Col>
         </>
     )
 };
