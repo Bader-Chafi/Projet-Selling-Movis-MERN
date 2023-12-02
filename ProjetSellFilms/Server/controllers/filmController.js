@@ -71,9 +71,17 @@ exports.getFilm = asyncHandler(async (req, res, next) => {
         ]
     );
     if (!Film) {
-        return next(new ApiError(`Films not found for this id ${id}`, 404))
+        return next(new ApiError(`Film not found for this id ${id}`, 404));
+    }
+    // Extract only the name property for category, date, and section
+    const formattedFilm = {
+        ...Film.toObject(),
+        category: Film.category ? Film.category.name : null,
+        date: Film.date ? Film.date.name : null,
+        section: Film.section ? Film.section.name : null,
     };
-    res.status(200).json({ data: Film });
+
+    res.status(200).json({ data: formattedFilm });
 })
 
 // @DESC  Update Film

@@ -486,3 +486,77 @@ i.fa.fa-search {
 }
 
 /* end Shop Film */
+
+/* Start Product Page */
+
+.Film {
+  background: #2e1441;
+}
+
+video {
+  height: 342px !important;
+}
+.FilmFB {
+  display: flex;
+  padding: 21px 0;
+}
+.fFilmImg {
+  display: flex;
+  flex-direction: column;
+  height: 115%;
+  align-items: center;
+}
+img.filmCover {
+  width: 294px;
+  margin-bottom: 6px;
+}
+.filmImages {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+img.ImageFArray {
+  width: 88px;
+}
+.FilmInfo {
+  width: 62%;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  font-family: fangsong;
+  color: white;
+  padding: 42px 19px;
+  height: fit-content;
+}
+.filmField {
+  display: flex;
+  width: 100%;
+}
+.FilmDiscription {
+  margin-top: 16px;
+}
+span.fieldName {
+  width: 38%;
+  font-family: monospace;
+}
+video {
+  height: 336px;
+  width: auto;
+}
+span.FilmDisc {
+  font-family: sans-serif;
+}
+
+.FilmDT {
+  justify-items: stretch;
+}
+@media (max-width: 1400px) {
+  .FilmFB {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .FilmDT {
+    margin: 20px;
+}
+}
+/* end Product Page */

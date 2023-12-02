@@ -73,8 +73,6 @@ const Films = (limit, page) => {
                         </div>
                     </form>
                 </div>
-
-
             </div>
 
             <Row className='d-flex justify-content-arouond option'>
@@ -128,7 +126,6 @@ const Films = (limit, page) => {
             <Col className="serchResult my-4 d-flex flex-wrap justify-content-between">
                 {searchResults.length > 0 && page ? (
                     searchResults.map((serchFilms) => (
-                        <Link to='' key={serchFilms._id}>
                             <ProductCard
                                 image={serchFilms.imageCover}
                                 name={serchFilms.title}
@@ -136,7 +133,6 @@ const Films = (limit, page) => {
                                 stars={serchFilms.ratingsAverage}
                                 disc={serchFilms.description}
                             />
-                        </Link>
                     ))
                 ) : (
                     <CardProductContainer urlapi='films' limit="10" page={page} />
