@@ -492,28 +492,24 @@ i.fa.fa-search {
 .Film {
   background: #2e1441;
 }
-
-video {
-  height: 342px !important;
-}
 .FilmFB {
   display: flex;
   padding: 21px 0;
 }
-.fFilmImg {
-  display: flex;
-  flex-direction: column;
-  height: 115%;
-  align-items: center;
+.filmImages {
+    width: inherit;
+    display: flex;
+    justify-content: space-evenly;
 }
 img.filmCover {
   width: 294px;
   margin-bottom: 6px;
 }
 .filmImages {
-  width: 100%;
+  width: inherit;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  margin-top: 10px;
 }
 img.ImageFArray {
   width: 88px;
@@ -536,12 +532,11 @@ img.ImageFArray {
   margin-top: 16px;
 }
 span.fieldName {
-  width: 38%;
+  width: 100%;
   font-family: monospace;
 }
 video {
-  height: 336px;
-  width: auto;
+  width: 100%;
 }
 span.FilmDisc {
   font-family: sans-serif;
@@ -550,13 +545,36 @@ span.FilmDisc {
 .FilmDT {
   justify-items: stretch;
 }
-@media (max-width: 1400px) {
+@media (max-width: 2000px) {
   .FilmFB {
     flex-wrap: wrap;
     justify-content: center;
   }
   .FilmDT {
     margin: 20px;
+  }
 }
+.ProfileActor {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
+
+.actor {
+  display: flex;
+  flex-direction: column;
+  margin-left: 16px;
+}
+
+img.actorImage {
+  width: 143px;
+}
+
+h5.actorName {
+  font-size: 14px;
+  color: wheat;
+}
+
 /* end Product Page */

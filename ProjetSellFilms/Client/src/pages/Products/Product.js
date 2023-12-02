@@ -35,35 +35,37 @@ const Product = () => {
         };
         fetchData();
     }, [id]);
+    const i = 0;
     return (
         <Container className="Product_Shop ">
             {product && filds ?
                 (<div className="Film">
                     <div className="FilmFB">
                         {/* imageCover and Array */}
-                        <div className="fFilmImg">
-                            <img className="filmCover" src={`${baseUrl}uploads/${product.imageCover}`} alt={product.title} />
-                            <div className="filmImages">
-                                <img className='ImageFArray' src={`${baseUrl}uploads/${product.imageCover}`} alt={product.title} />
-                                <img className='ImageFArray' src={`${baseUrl}uploads/${product.imageCover}`} alt={product.title} />
-                                <img className='ImageFArray' src={`${baseUrl}uploads/${product.imageCover}`} alt={product.title} />
+                        <div className="someOT">
+                            <div className="fFilmImg">
+                                <img className="filmCover" src={`${baseUrl}uploads/${product.imageCover}`} alt={product.title} />
                             </div>
-                        </div>
-                        <div className="FilmInfo">
-                            <div className='info'>
-                                {filds.map((fild) => {
-                                    return (
-                                        <div className="filmField">
-                                            <span className="fieldName">{fild.name} :</span>
-                                            <span className="fieldValue">{fild.value}</span>
-                                        </div>)
-                                })}
+                            <div className="FilmInfo">
+                                <div className='info'>
+                                    {filds.map((fild) => {
+                                        return (
+                                            <div className="filmField">
+                                                <span className="fieldName">{fild.name} :</span>
+                                                <span className="fieldValue">{fild.value}</span>
+                                            </div>)
+                                    })}
+                                </div>
+                                <div className="FilmDiscription">
+                                    <span className="fieldName">Description :</span> <br />
+                                    <span className="FilmDisc">{product.description}</span>
+                                </div>
+                                <div className="filmImages">
+                                    <img className='ImageFArray' src={`${baseUrl}uploads/${product.imageCover}`} alt={product.title} />
+                                    <img className='ImageFArray' src={`${baseUrl}uploads/${product.imageCover}`} alt={product.title} />
+                                    <img className='ImageFArray' src={`${baseUrl}uploads/${product.imageCover}`} alt={product.title} />
+                                </div>
                             </div>
-                            <div className="FilmDiscription">
-                                 <span className="fieldName">Description :</span> <br />
-                                <span className="FilmDisc">{product.description}</span>
-                            </div>
-
                         </div>
                         <div className="FilmDT">
                             <div className="FilmTriller">
@@ -71,6 +73,16 @@ const Product = () => {
                                     <source src={`${baseUrl}uploads/${product.video}`} />
                                 </video>
                             </div>
+                            <div className="ProfileActor ">
+                                {[...Array(6)].map((_, i) => (
+                                    <div key={i} className="actor">
+                                        <img className="actorImage" src={`${baseUrl}uploads/${product.imageCover}`} alt={product.title} />
+                                        <h5 className="actorName">Adam Hollywood</h5>
+                                    </div>
+                                ))}
+
+                            </div>
+
                         </div>
                     </div>
 
