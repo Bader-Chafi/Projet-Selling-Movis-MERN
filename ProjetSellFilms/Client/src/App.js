@@ -31,6 +31,11 @@ function App() {
               <Route path="/profile" element={<Profile />} />
             </> :
               <>
+                <Route path="/ShopFilms" element={<LoginPage />} />
+                <Route path="/products" element={<LoginPage />} />
+                <Route path="/profile/:id" element={<LoginPage />} />
+                <Route path="all_category" element={<LoginPage />} />
+                <Route path="/profile" element={<LoginPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
               </>

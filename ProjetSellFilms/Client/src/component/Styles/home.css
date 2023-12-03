@@ -73,7 +73,13 @@ ul.user {
   right: 179px;
 }
 
-.loding {
+p.loading {
+  position: absolute;
+  color: #796262;
+  top: 28%;
+  right: 25%;
+  font-size: larger;
+  width: fit-content;
 }
 
 header .account {
@@ -490,7 +496,7 @@ i.fa.fa-search {
 /* Start Product Page */
 
 .Film {
-  background: #12124b;
+  background: transparent;
 }
 .FilmFB {
   flex-wrap: wrap;
