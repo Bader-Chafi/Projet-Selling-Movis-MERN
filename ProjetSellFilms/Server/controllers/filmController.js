@@ -17,7 +17,7 @@ exports.createFilm = asyncHandler(async (req, res) => {
         section: req.body.section,
         imageCover: req.body.imageCover.replace("C:\\fakepath\\", ""), // Adjust the path as needed
         video: req.body.video.replace("C:\\fakepath\\", ""), // Adjust the path as needed
-        price: req.body.price,
+        price: req.body.price + ' USD',
         sold: req.body.sold,
         description: req.body.description,
         slug: req.body.slug,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { baseUrl } from "../../component/Utility/Constant";
 import axios from "axios";
 import { Container } from "react-bootstrap";
@@ -14,6 +14,7 @@ const Product = () => {
         { name: 'date', value: '' },
         { name: 'price', value: '' },
         { name: 'sold', value: '' },
+        { name: 'ratingsAverage', value: '' },  
     ]);
     useEffect(() => {
         const fetchData = async () => {
@@ -21,6 +22,7 @@ const Product = () => {
                 const filmData = await axios.get(`${baseUrl}films/${id}`);
                 const data = filmData.data.data;
                 setProduct(data);
+                console.log(data)
                 if (data) {
                     const newFilds = filds.map((field) => ({
                         name: field.name,
@@ -34,8 +36,7 @@ const Product = () => {
             }
         };
         fetchData();
-    }, [id]);
-    const i = 0;
+    }, []);
     return (
         <Container className="Product_Shop ">
             {product && filds ?
@@ -47,14 +48,20 @@ const Product = () => {
                                 <img className="filmCover" src={`${baseUrl}uploads/${product.imageCover}`} alt={product.title} />
                             </div>
                             <div className="FilmInfo">
-                                <div className='info'>
-                                    {filds.map((fild) => {
-                                        return (
-                                            <div className="filmField">
-                                                <span className="fieldName">{fild.name} :</span>
-                                                <span className="fieldValue">{fild.value}</span>
-                                            </div>)
-                                    })}
+                                <div className="info">
+                                    <table className=''>
+                                        {filds.map((fild) => {
+                                            return (
+                                                <tr className="filmField">
+                                                    <td className="fieldName" width='100px'>{fild.name} :</td>
+                                                    <td className="fieldValue">{fild.value}</td>
+                                                </tr>)
+                                        })}
+                                    </table>
+                                    <div className='btn d-flex flex-column justify-content-evenly'>
+                                        <button className="btn Acheter"><Link to='/'>Shop Now</Link></button>
+                                        <button className="btn Acheter"><Link to='/'>Add To Panier</Link></button>
+                                    </div>
                                 </div>
                                 <div className="FilmDiscription">
                                     <span className="fieldName">Description :</span> <br />
@@ -76,7 +83,7 @@ const Product = () => {
                             <div className="ProfileActor ">
                                 {[...Array(6)].map((_, i) => (
                                     <div key={i} className="actor">
-                                        <img className="actorImage" src={`${baseUrl}uploads/${product.imageCover}`} alt={product.title} />
+                                        <img className="actorImage" src='https://m.media-amazon.com/images/M/MV5BMjI0MTg3MzI0M15BMl5BanBnXkFtZTcwMzQyODU2Mw@@._V1_FMjpg_UX1000_.jpg' alt={product.title} />
                                         <h5 className="actorName">Adam Hollywood</h5>
                                     </div>
                                 ))}

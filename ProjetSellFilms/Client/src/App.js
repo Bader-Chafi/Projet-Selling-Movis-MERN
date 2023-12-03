@@ -21,17 +21,19 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
           {/* if the user not login this pages not show for them except homa page */}
           {
-            typeUser && <>
+            typeUser ? <>
               <Route path="/ShopFilms" element={<ShopProducts />} />
               <Route path="/products" element={<ProductPage />} />
               <Route path="/profile/:id" element={<Product />} />
               <Route path="all_category" element={<AllCategory />} />
               <Route path="/profile" element={<Profile />} />
-            </>
+            </> :
+              <>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+              </>
           }
           {/* the all user whith type user not can going to the page admin */}
           {

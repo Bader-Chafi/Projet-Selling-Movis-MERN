@@ -20,7 +20,7 @@ const GetUserInfo = (userid, setData) => {
             }
         };
         fetchData()
-    }, []);
+    }, [setData,userid,typeUser]);
 
 };
 

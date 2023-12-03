@@ -490,29 +490,42 @@ i.fa.fa-search {
 /* Start Product Page */
 
 .Film {
-  background: #2e1441;
+  background: #12124b;
 }
 .FilmFB {
-  display: flex;
-  padding: 21px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.fFilmImg {
+  box-shadow: 0px 0px 18px 6px white;
+  width: 21%;
+  margin: 41px;
+  height: 408px;
 }
 .filmImages {
-    width: inherit;
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 11px;
 }
 img.filmCover {
-  width: 294px;
+  width: 100%;
   margin-bottom: 6px;
 }
 .filmImages {
-  width: inherit;
+  width: 304PX;
   display: flex;
   justify-content: space-evenly;
   margin-top: 10px;
 }
 img.ImageFArray {
   width: 88px;
+}
+.someOT {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
 }
 .FilmInfo {
   width: 62%;
@@ -524,28 +537,66 @@ img.ImageFArray {
   padding: 42px 19px;
   height: fit-content;
 }
-.filmField {
+.info {
   display: flex;
-  width: 100%;
+  justify-content: space-between;
+}
+button.btn.Acheter {
+  height: 45px;
+  font-weight: 700;
+  width: 146px;
+  font-family: sans-serif;
+  box-shadow: 0px 0px 18px 4px #56faff;
+  border-radius: 49px;
+  border: 4px dotted #fdf8ff;
+}
+button.btn.Acheter a {
+  color: white;
+  text-decoration: none;
+}
+button.btn.Acheter a:hover {
+  color: greenyellow;
 }
 .FilmDiscription {
   margin-top: 16px;
 }
-span.fieldName {
+table {
+  caption-side: bottom;
   width: 100%;
+  border-collapse: collapse;
+}
+.filmField {
+  display: flex;
+  width: 100%;
+  padding: 3px;
+}
+.fieldName {
+  width: 32%;
   font-family: monospace;
 }
-video {
-  width: 100%;
+.fieldValue {
+  width: fit-content;
 }
-span.FilmDisc {
+.FilmTriller {
+  display: flex;
+  justify-content: center;
+}
+video {
+  width: 59%;
+  margin: 0 0 31px 0;
+}
+.FilmDisc {
   font-family: sans-serif;
+  font-size: 15px;
 }
 
 .FilmDT {
   justify-items: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-@media (max-width: 2000px) {
+/* @media (max-width: 2000px) {
   .FilmFB {
     flex-wrap: wrap;
     justify-content: center;
@@ -553,9 +604,10 @@ span.FilmDisc {
   .FilmDT {
     margin: 20px;
   }
-}
+} */
 .ProfileActor {
   display: flex;
+  margin: 12px;
   flex-direction: row;
   align-content: space-between;
   flex-wrap: wrap;
@@ -565,16 +617,17 @@ span.FilmDisc {
 .actor {
   display: flex;
   flex-direction: column;
-  margin-left: 16px;
+  align-items: center;
 }
 
 img.actorImage {
-  width: 143px;
+  width: 100px;
 }
 
 h5.actorName {
   font-size: 14px;
   color: wheat;
+  padding: 9px;
 }
 
 /* end Product Page */
