@@ -22,7 +22,6 @@ const Product = () => {
                 const filmData = await axios.get(`${baseUrl}films/${id}`);
                 const data = filmData.data.data;
                 setProduct(data);
-                console.log(data)
                 if (data) {
                     const newFilds = filds.map((field) => ({
                         name: field.name,
@@ -50,13 +49,15 @@ const Product = () => {
                             <div className="FilmInfo">
                                 <div className="info">
                                     <table className=''>
-                                        {filds.map((fild) => {
+                                        <tbody>
+                                        {filds.map((fild,key) => {
                                             return (
-                                                <tr className="filmField">
+                                                <tr className="filmField" key={key}>
                                                     <td className="fieldName" width='100px'>{fild.name} :</td>
                                                     <td className="fieldValue">{fild.value}</td>
                                                 </tr>)
                                         })}
+                                        </tbody>
                                     </table>
                                     <div className='btn d-flex flex-column justify-content-evenly'>
                                         <button className="btn Acheter"><Link to='/'>Shop Now</Link></button>

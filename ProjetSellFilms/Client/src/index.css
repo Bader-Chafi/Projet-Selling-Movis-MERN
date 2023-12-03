@@ -13,7 +13,7 @@ code {
 }
 
 .font {
-  background-color: #12124b;
+  /* background-color: #12124b; */
   background-image: url('./images/background.png');
   background-size: cover;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import SubTitle from "../Utility/SubTitle";
 import CategoryCard from "../category/CategoryCard";
 import CardProductContainer from "../Prodacts/CardProductContainner";
@@ -19,7 +19,7 @@ const HomeHeader = () => {
                     <SubTitle liens='/all_category' title='CATEGORY' btnTitle='SHOW MORE' />
                 </Container>    
             </div>
-            <div className="d-flex justify-content-between Category_card">
+            <div className="d-flex justify-content-between ">
                 <Container>
                     <Row>
                         {categories.map((category) => (

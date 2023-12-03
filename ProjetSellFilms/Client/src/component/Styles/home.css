@@ -281,10 +281,17 @@ img.titlePG_image {
   color: white;
 }
 
+.subtitleB .btn-link {
+  color: black;
+  text-decoration: none;
+  font-family: 'Roboto';
+  text-transform: capitalize;
+}
+
 /* start Category Card */
 
 .Category_card {
-  background-image: url("../../images/bannerProduct.jpg");
+  /* background-image: url("../../images/bannerProduct.jpg"); */
 }
 
 .category-card-text {
@@ -507,7 +514,8 @@ i.fa.fa-search {
   box-shadow: 0px 0px 18px 6px white;
   width: 21%;
   margin: 41px;
-  height: 408px;
+  height: 408PX;
+  border-radius: 12px;
 }
 .filmImages {
   display: flex;
@@ -517,6 +525,7 @@ i.fa.fa-search {
 img.filmCover {
   width: 100%;
   margin-bottom: 6px;
+  border-radius: 12px;
 }
 .filmImages {
   width: 304PX;

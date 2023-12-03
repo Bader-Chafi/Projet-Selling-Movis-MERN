@@ -1,6 +1,6 @@
 import React from 'react';
 import SubTitle from '../Utility/SubTitle';
-import { Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import fetchData from '../Utility/GetCategory';
 import { baseUrl } from '../Utility/Constant';
 import CategoryCard from './CategoryCard';
@@ -13,10 +13,10 @@ const AllCategory = () => {
     }, [])
 
     return (
-        <div className='all-product' style={{ marginTop: '90px' }}>
+        <div className='all-product'>
             <Container>
                 <SubTitle title='All Category' />
-                <Row className="my-2 d-flex justify-content-between Category_card">
+                <Col className="my-2 d-flex justify-content-between Category_card flex-wrap">
                     {categories.map((category) => (
                         <CategoryCard
                             key={category._id}
@@ -24,8 +24,7 @@ const AllCategory = () => {
                             img={category.image}
                         />
                     ))}
-                </Row>
-                
+                </Col>
             </Container>
             {/* <CardProductContainer /> */}
         </div>

@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { baseUrl } from '../Utility/Constant';
 import { Row, Col, Dropdown, Nav } from 'react-bootstrap';
 import axios from 'axios';
-// import OptionsSelect from '../Utility/OptionsSelect';
 import ProductCard from '../Prodacts/ProductCard';
 import CardProductContainer from '../Prodacts/CardProductContainner';
 import fetchData from '../Utility/GetCategory';
