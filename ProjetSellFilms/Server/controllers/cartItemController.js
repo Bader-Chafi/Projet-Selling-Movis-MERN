@@ -26,5 +26,24 @@ exports.getCartsUser = asyncHandler(async (req, res) => {
   } catch (err) {
     console.log(err)
   }
-
 })
+
+exports.deleteCartUser = asyncHandler(async (req, res) => {
+  const { userId, filmId } = req.query;
+  const cartUser = await CartItem.findOneAndDelete({ user: userId, film: filmId });
+  if (cartUser) {
+    res.status(200).send({ msg: 'You Are Remove the item' });
+  } else {
+    res.status(500).send({ msg: 'there is not found this item' })
+  }
+});
+
+exports.deleteAllCartUser = asyncHandler(async (req, res) => {
+  const { userId } = req.params;
+  const allCart = await CartItem.deleteMany({ user: userId });
+  if (allCart) {
+    res.status(200).send({ msg: 'You Are Remove ALL items' });
+  } else {
+    res.status(500).send({ msg: 'There is no cart found for this user' });
+  }
+});

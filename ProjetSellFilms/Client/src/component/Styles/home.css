@@ -284,7 +284,7 @@ img.titlePG_image {
 .subtitleB .btn-link {
   color: black;
   text-decoration: none;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   text-transform: capitalize;
 }
 
@@ -415,7 +415,7 @@ img.titlePG_image {
   background-color: white;
   font-size: 19px;
 }
-.product_button .shoping:hover{
+.product_button .shoping:hover {
   color: rgb(75, 230, 23);
   cursor: pointer;
 }
@@ -519,7 +519,7 @@ i.fa-solid.fa-xmark {
   box-shadow: 0px 0px 18px 6px white;
   width: 21%;
   margin: 41px;
-  height: 400px;;
+  height: 400px;
   border-radius: 12px;
 }
 .filmImages {
@@ -533,7 +533,7 @@ img.filmCover {
   height: 400px;
 }
 .filmImages {
-  width: 304PX;
+  width: 304px;
   display: flex;
   justify-content: space-evenly;
   margin-top: 10px;
@@ -674,5 +674,37 @@ h5.actorName {
 .cartItemBodytd {
   padding: 2px;
 }
+.removeItem,
+.ShopItem {
+  height: 39px;
+  font-weight: 700;
+  width: 115px;
+  font-family: sans-serif;
+  border-radius: 49px;
+  border: 4px dotted #fdf8ff;margin: 2px;
+}
+.ShopItem {
+  box-shadow: 0px 0px 18px 4px rgb(62, 228, 240);
+  color: #20cbff;
+  background: rgb(82, 104, 248)55, 255, 255);
+}
+
+.removeItem {
+  box-shadow: 0px 0px 18px 4px #b73d3d;
+  color: #ff2020;
+  background: white;
+}
+.removeItem:hover {
+  color: rgb(255, 255, 255);
+  background-color: #ff2020;
+}
 /*End  CartItemds */
 
+h1.LoginData {
+  width: 100%;
+  height: 90vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

@@ -1,10 +1,21 @@
 const express = require('express');
 const router = express.Router();
-const { addToCart, getCartsUser } = require('../controllers/cartItemController');
+const {
+    addToCart,
+    getCartsUser,
+    deleteCartUser,
+    deleteAllCartUser
+} = require('../controllers/cartItemController');
 
-router.route('/')
-    .post(addToCart)
-router.route('/:userId')
-    .get(getCartsUser)
+router.post('/',addToCart)
+// Get all carts for a specific user
+router.get('/:userId', getCartsUser);
+
+// Delete all carts for a specific user
+router.put('/:userId', deleteAllCartUser);
+
+// Delete a specific cart for a user
+router.put('/', deleteCartUser);
+
 
 module.exports = router

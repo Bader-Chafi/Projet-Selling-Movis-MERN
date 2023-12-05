@@ -121,7 +121,8 @@ const Product = () => {
                     </div>
 
                 </div>)
-                : (<h1>World</h1>)}
+                : (<h1 className="LoginData">Loding data ...</h1>)
+            }
         </Container>
     );
 };
