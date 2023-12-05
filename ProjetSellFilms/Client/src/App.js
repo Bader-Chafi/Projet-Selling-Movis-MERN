@@ -5,7 +5,6 @@ import Navbar from "./component/Utility/Navbar";
 import Footer from "./component/Utility/Footer";
 import LoginPage from "./pages/Auth/LoginPage";
 import RegisterPage from "./pages/Auth/RegisterPage";
-import ProductPage from "./pages/ProductPage";
 import ShopProducts from "./pages/Products/ShopFilms";
 import AdminPage from "./pages/Admin/AdminPage";
 import AllCategory from "./component/category/AllCategory";
@@ -25,8 +24,7 @@ function App() {
           {
             typeUser ? <>
               <Route path="/ShopFilms" element={<ShopProducts />} />
-              <Route path="/products" element={<ProductPage />} />
-              <Route path="/profile/:id" element={<Product />} />
+              <Route path="/ShopFilms/:id" element={<Product />} />
               <Route path="all_category" element={<AllCategory />} />
               <Route path="/profile" element={<Profile />} />
             </> :

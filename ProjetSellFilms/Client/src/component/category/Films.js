@@ -10,10 +10,6 @@ import fetchData from '../Utility/GetCategory';
 const Films = (limit, page) => {
     const [categories, setCategories] = useState([]);
     const [dates, setDate] = useState([]);
-    const [sections, setSection] = useState([]);
-    const [category, setCategoryQuery] = useState('');
-    const [section, setSectionQuery] = useState('');
-    const [date, setDateQuery] = useState('');
     const handleCategory = (id) => {
         setCategoryQuery(id)
     }
@@ -24,6 +20,10 @@ const Films = (limit, page) => {
         setDateQuery(id)
     }
     const [serchTitle, setTitleQuery] = useState('');
+    const [sections, setSection] = useState([]);
+    const [category, setCategoryQuery] = useState('');
+    const [section, setSectionQuery] = useState('');
+    const [date, setDateQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [lengthFilms, setLenghtFilms] = useState();
     React.useEffect(() => {
@@ -34,11 +34,10 @@ const Films = (limit, page) => {
         // Perform search when the setserchTitle changes
         if (serchTitle.trim() !== '' || category !== '' || section !== '' || date !== '') {
             // Call your search API endpoint with the setserchTitle
-            axios.get(`${baseUrl}searchfilm?title=${serchTitle}&category=${category}&section=${section}&date=${date}&limit=${10}&page=${2}`)
+            axios.get(`${baseUrl}searchfilm?title=${serchTitle}&category=${category}&section=${section}&date=${date}&limit=${10}&page=${page}`)
                 .then(response => {
                     setSearchResults(response.data.data);
                     setLenghtFilms(response.data.data.length);
-                    console.log(response.data.data.length)
                 })
                 .catch(error => {
                     console.error('Error fetching search results:', error);
@@ -51,6 +50,7 @@ const Films = (limit, page) => {
     }, [serchTitle, category, section, date, limit, page]);
     return (
         <>
+            {/* title and input */}
             <div className='d-flex justify-content-between my-4 filSearchFB'>
                 <div className='filTitle'>
                     <h2 className='d-block text-light'>Search Your Favorit Movis</h2>
@@ -67,12 +67,17 @@ const Films = (limit, page) => {
                                 onChange={(e) => setTitleQuery(e.target.value)}
                                 aria-label="Search"
                             />
-                            <i className='fa fa-search'></i>
+                            {
+                                serchTitle.length > 0 ?
+                                    <i className="fa-solid fa-xmark"></i>
+                                    : <span><i className='fa fa-search'></i></span>
+                            }
+
                         </div>
                     </form>
                 </div>
             </div>
-
+            {/* search methode */}
             <Row className='d-flex justify-content-arouond option'>
                 <Col className='text-light col-lg-12'>
                     {searchResults && <div className='d-block'>
@@ -124,13 +129,16 @@ const Films = (limit, page) => {
             <Col className="serchResult my-4 d-flex flex-wrap justify-content-between">
                 {searchResults.length > 0 && page ? (
                     searchResults.map((serchFilms) => (
+                        <span key={serchFilms._id}>
                             <ProductCard
+                                id={serchFilms._id}
                                 image={serchFilms.imageCover}
                                 name={serchFilms.title}
                                 prix={serchFilms.price}
                                 stars={serchFilms.ratingsAverage}
                                 disc={serchFilms.description}
                             />
+                        </span>
                     ))
                 ) : (
                     <CardProductContainer urlapi='films' limit="10" page={page} />

@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import Paginate from '../../component/Utility/Paginate';
-import { Container} from 'react-bootstrap';
+import React from 'react';
+import { Container } from 'react-bootstrap';
 import Films from '../../component/category/Films';
+import Paginate from '../../component/Utility/Paginate';
 
 const ShopFilms = () => {
-    const [currentPage, setCurrentPage] = useState(1);
-
+    const [currentPage, setCurrentPage] = React.useState();
     const handlePageChange = (selectedPage) => {
         setCurrentPage(selectedPage);
     };

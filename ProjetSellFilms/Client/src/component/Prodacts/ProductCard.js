@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ id, image, name, prix, stars, disc }) => {
     return (
-        <Link to={`/profile/${id}`} className="nav-link">
+        <Link to={`/ShopFilms/${id}`} className="nav-link">
             <div className="The_product">
                 <div className="Product_card">
                     <div className="Poducat_img">
@@ -24,7 +24,7 @@ const ProductCard = ({ id, image, name, prix, stars, disc }) => {
                         </div>
                         <div className="product_button">
                             <i className="fa-solid fa-cart-shopping shoping"></i>
-                            <i class="fa-solid fa-shield-heart heart"></i>
+                            <i className="fa-solid fa-shield-heart heart"></i>
                             <span className="product_stars">{stars}<i className="fa-solid fa-star star" color="red"></i></span>
                         </div>
                     </div>
@@ -34,6 +34,7 @@ const ProductCard = ({ id, image, name, prix, stars, disc }) => {
                 </div>
             </div>
         </Link>
+
     )
 }
 

@@ -473,7 +473,8 @@ tr.d-flex {
   justify-content: space-evenly;
 }
 
-i.fa.fa-search {
+i.fa.fa-search,
+i.fa-solid.fa-xmark {
   width: 52px;
   font-size: 20px;
   color: white;

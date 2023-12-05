@@ -13,7 +13,8 @@ const Navbar = () => {
     setCookies('access_token', '');
     window.localStorage.removeItem('user_id', '');
     window.localStorage.removeItem('typeUser', '');
-    window.location.reload(true);
+    navigate('/');
+    window.location.reload(false);
   }
   const handleToggle = () => {
     setMobile(!Mobile);
