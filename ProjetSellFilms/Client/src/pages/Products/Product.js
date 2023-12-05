@@ -36,10 +36,36 @@ const Product = () => {
         };
         fetchData();
     }, []);
+    // add panier
+    const [msg, setMsg] = useState();
+    const [notif, setNotif] = useState(false);
+    const notifShow = () => {
+        setNotif(true);
+        setTimeout(() => {
+            setNotif(false);
+        }, 1000)
+    }
+    const handlAddToCart = () => {
+        const userId = window.localStorage.getItem('user_id');
+        const formData = {
+            filmId: id,
+            userId: userId,
+        };
+        axios.post(`${baseUrl}cartitems`, formData, {
+            headers: { 'Content-Type': 'application/json' },
+        }).then((response) => {
+            console.log(response);
+            setMsg(response.data.msg);
+            notifShow();
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
     return (
         <Container className="Product_Shop ">
             {product && filds ?
                 (<div className="Film">
+                    {notif && <div className='alert text-center alert-success'>{msg}</div>} 
                     <div className="FilmFB">
                         {/* imageCover and Array */}
                         <div className="someOT">
@@ -61,7 +87,7 @@ const Product = () => {
                                     </table>
                                     <div className='btn d-flex flex-column justify-content-evenly'>
                                         <button className="btn Acheter"><Link to='/'>Shop Now</Link></button>
-                                        <button className="btn Acheter"><Link to='/'>Add To Panier</Link></button>
+                                        <button onClick={handlAddToCart} className="btn Acheter">Add To Panier</button>
                                     </div>
                                 </div>
                                 <div className="FilmDiscription">
@@ -77,7 +103,7 @@ const Product = () => {
                         </div>
                         <div className="FilmDT">
                             <div className="FilmTriller">
-                                <video controls autoPlay>
+                                <video controls>
                                     <source src={`${baseUrl}uploads/${product.video}`} />
                                 </video>
                             </div>

@@ -415,6 +415,10 @@ img.titlePG_image {
   background-color: white;
   font-size: 19px;
 }
+.product_button .shoping:hover{
+  color: rgb(75, 230, 23);
+  cursor: pointer;
+}
 
 .product_button.fa-star {
   color: #f59617;
@@ -671,3 +675,4 @@ h5.actorName {
   padding: 2px;
 }
 /*End  CartItemds */
+
