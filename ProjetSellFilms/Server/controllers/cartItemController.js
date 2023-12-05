@@ -2,7 +2,6 @@
 const CartItem = require('../models/cartItemModel')
 const asyncHandler = require('express-async-handler')
 
-
 exports.addToCart = asyncHandler(async (req, res) => {
   const { filmId, userId } = req.body;
   let cartItem = await CartItem.findOne({ user: userId, film: filmId });
@@ -18,9 +17,9 @@ exports.addToCart = asyncHandler(async (req, res) => {
 exports.getCartsUser = asyncHandler(async (req, res) => {
   const userId = req.params.userId;
   try {
-    const cartUser = await CartItem.find({ user: userId }).populate({ path: 'film'});
+    const cartUser = await CartItem.find({ user: userId }).populate({ path: 'film' });
     if (cartUser) {
-      res.status(200).send({ length: cartUser.length, data:cartUser });
+      res.status(200).send({ length: cartUser.length, data: cartUser });
     } else {
       res.status(200).send({ msg: 'You have not Any film of this user:"' });
     }

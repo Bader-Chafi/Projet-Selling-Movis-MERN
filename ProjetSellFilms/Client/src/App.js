@@ -9,9 +9,9 @@ import ShopProducts from "./pages/Products/ShopFilms";
 import AdminPage from "./pages/Admin/AdminPage";
 import AllCategory from "./component/category/AllCategory";
 import FakeAdmin from "./pages/Admin/FakeAdmin";
-// import Profile from "./pages/Profile";
+import Profile from "./pages/Profile";
 import Product from "./pages/Products/Product";
-import CartItemUser from "./component/carditem/CardItemsUser";
+import CartItemUser from "./component/cartItem/CartItemsUser";
 
 function App() {
   const typeUser = window.localStorage.getItem('typeUser');
@@ -27,8 +27,8 @@ function App() {
               <Route path="/ShopFilms" element={<ShopProducts />} />
               <Route path="/ShopFilms/:id" element={<Product />} />
               <Route path="all_category" element={<AllCategory />} />
-              {/* <Route path="/profile" element={<Profile />} /> */}
-              <Route path="/profile" element={<CartItemUser />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/cartItems" element={<CartItemUser />} />
 
             </> :
               <>

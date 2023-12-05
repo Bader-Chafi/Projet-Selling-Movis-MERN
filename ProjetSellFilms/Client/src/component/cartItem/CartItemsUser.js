@@ -6,15 +6,18 @@ import { Link } from 'react-router-dom';
 const CartItemUser = () => {
     const userId = window.localStorage.getItem('user_id');
     const [cartData, setCartData] = useState([]);
-    const [filmItems, setFilmItems] = useState([]);
     const [msg, setMsg] = useState("")
     React.useEffect(() => {
         axios.get(`${baseUrl}cartitems/${userId}`)
             .then(response => {
-                setCartData(response.data.data);
+                if(response.data.data.length > 0){
+                    setCartData(response.data.data);
+                    console.log(response)
+                } else {
+                    setMsg("You have not Any Films Cart");
+                }
             })
             .catch(error => {
-                setMsg(error.message);
                 console.error(error);
             });
     }, [userId]);

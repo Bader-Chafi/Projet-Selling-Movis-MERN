@@ -22,7 +22,7 @@ const Navbar = () => {
   const [user, setUser] = useState();
   const userid = window.localStorage.getItem("user_id");
   GetUserInfo(userid, setUser);
-  
+
   return (
     <header>
       <nav className='container'>
@@ -39,8 +39,12 @@ const Navbar = () => {
           </ul>
         </div>
         <div className='account' style={{ flexGrow: 3 }}>
-          <i className='fas fa-bell'></i>
-          <i className="fa-solid fa-cart-shopping"></i>
+          <Link to={`/cartItems`} style={{ 'marginLeft': '0' }}>
+            <i className='fas fa-bell'></i>
+          </Link>
+          <Link to={`/cartItems`} style={{ 'marginLeft': '0' }} className="nav-link">
+            <i className="fa-solid fa-cart-shopping"></i>
+          </Link>
           {cookies.access_token ? (
             <div className="userInfo">
               <i className="fa-solid fa-user "></i>
@@ -50,7 +54,7 @@ const Navbar = () => {
                   <li><Link to="/profile">Profile</Link></li>
                   <li onClick={removeCokies}>LogOut</li>
                 </ul>
-              )  : <p className="loading">Loding Data ....</p>}
+              ) : <p className="loading">Loding Data ....</p>}
             </div>)
             : (<button><a href='/login'>LogIn Now</a></button>)
           }
