@@ -16,11 +16,16 @@ exports.addToCart = asyncHandler(async (req, res) => {
 })
 
 exports.getCartsUser = asyncHandler(async (req, res) => {
-  const { userId } = req.query.userId;
-  const cartUser = await CartItem.find({ userId: userId }).populate({ path: 'film', select: 'title' });
-  if (cartUser) {
-    res.status(200).send({ length: cartUser.length, data: cartUser });
-  } else {
-    res.status(201).send({ msg: 'You have not Any film in the cart' });
+  const userId = req.params.userId;
+  try {
+    const cartUser = await CartItem.find({ user: userId }).populate({ path: 'film'});
+    if (cartUser) {
+      res.status(200).send({ length: cartUser.length, data:cartUser });
+    } else {
+      res.status(200).send({ msg: 'You have not Any film of this user:"' });
+    }
+  } catch (err) {
+    console.log(err)
   }
+
 })

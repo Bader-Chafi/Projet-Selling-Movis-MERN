@@ -14,7 +14,7 @@ const Product = () => {
         { name: 'date', value: '' },
         { name: 'price', value: '' },
         { name: 'sold', value: '' },
-        { name: 'ratingsAverage', value: '' },  
+        { name: 'ratingsAverage', value: '' },
     ]);
     useEffect(() => {
         const fetchData = async () => {
@@ -50,13 +50,13 @@ const Product = () => {
                                 <div className="info">
                                     <table className=''>
                                         <tbody>
-                                        {filds.map((fild,key) => {
-                                            return (
-                                                <tr className="filmField" key={key}>
-                                                    <td className="fieldName" width='100px'>{fild.name} :</td>
-                                                    <td className="fieldValue">{fild.value}</td>
-                                                </tr>)
-                                        })}
+                                            {filds.map((fild, key) => {
+                                                return (
+                                                    <tr className="filmField" key={key}>
+                                                        <td className="fieldName" width='100px'>{fild.name} :</td>
+                                                        <td className="fieldValue">{fild.value}</td>
+                                                    </tr>)
+                                            })}
                                         </tbody>
                                     </table>
                                     <div className='btn d-flex flex-column justify-content-evenly'>

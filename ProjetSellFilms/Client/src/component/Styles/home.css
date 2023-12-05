@@ -515,7 +515,7 @@ i.fa-solid.fa-xmark {
   box-shadow: 0px 0px 18px 6px white;
   width: 21%;
   margin: 41px;
-  height: 408PX;
+  height: 400px;;
   border-radius: 12px;
 }
 .filmImages {
@@ -525,8 +525,8 @@ i.fa-solid.fa-xmark {
 }
 img.filmCover {
   width: 100%;
-  margin-bottom: 6px;
   border-radius: 12px;
+  height: 400px;
 }
 .filmImages {
   width: 304PX;
@@ -647,3 +647,27 @@ h5.actorName {
 }
 
 /* end Product Page */
+
+/*Start CartItemds */
+.cartItems {
+  margin: 27px 0;
+  text-align: center;
+}
+.cardItemsTable {
+  table-layout: fixed;
+  /* border: 1px red solid; */
+}
+.cartItemHead tr th {
+  padding: 11px;
+  font-family: monospace;
+  font-size: 19px;
+  background: #00abc9;
+}
+.cartItemBody {
+  background: #2b2a28;
+  font-size: 17px;
+}
+.cartItemBodytd {
+  padding: 2px;
+}
+/*End  CartItemds */
