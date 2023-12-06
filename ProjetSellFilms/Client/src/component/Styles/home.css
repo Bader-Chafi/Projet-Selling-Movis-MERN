@@ -708,3 +708,76 @@ h1.LoginData {
   align-items: center;
   justify-content: space-around;
 }
+
+
+/* START Payment Page */
+.Payment.container {
+  display: flex;
+  font-family: monospace;
+  justify-content: space-evenly;
+}
+.PayFilm {
+  align-self: center;
+}
+h2.PayPrice {
+  font-size: 38px;
+  color: greenyellow;
+}
+.PayForm {
+  color: white;
+}
+.PayForm form {
+  width: 588px;
+  display: flex;
+  flex-direction: column;
+  height: 607px;
+  justify-content: space-between;
+  padding: 30px;
+}
+legend {
+  font-size: 35px;
+}
+.PayFilds {
+  display: flex;
+  flex-direction: column;
+}
+label.PayLabel {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+input.InputName {
+  border: none;
+  padding: 8px 18px;
+  border-radius: 37px;
+  margin-bottom: 12px;
+  margin-left: 6px;
+}
+input.InputName:focus {
+  outline: none;
+}
+.PayFilds.CDate {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+input.InputName {
+  border: none;
+  padding: 8px 18px;
+  border-radius: 37px;
+  margin-bottom: 12px;
+  margin-left: 6px;
+}
+.PayFildsBtn {
+  display: flex;
+  justify-content: center;
+}
+button.btnPayShop {
+  width: 224px;
+  padding: 8px;
+  border-radius: 50px;
+  border: none;
+  background: #4fe7ff;
+  text-transform: capitalize;
+}
+
+/* End Payment Page */

@@ -24,7 +24,7 @@ const CartItemUser = () => {
                 console.error(error);
             });
     }, [userId]);
-
+    // Destroy
     const handleBtnRemove = (id) => {
         // delete One
         if (id) {
@@ -43,8 +43,9 @@ const CartItemUser = () => {
                 })
                 .catch(error => { console.error(error); });
         }
-
     }
+    // shop items
+
     return (
         <div className='cartItems'>
             <div className='tableCard'>
@@ -79,7 +80,7 @@ const CartItemUser = () => {
                                     <td>{item.film.ratingsAverage}<i className="fa-solid fa-star text-warning" color="red"></i></td>
                                     <td>
                                         <button className='removeItem btn-Delete' onClick={() => { handleBtnRemove(item.film._id) }}>Delete</button>
-                                        <button className='ShopItem btn-shop'>Shopping</button>
+                                        <button className='ShopItem btn-shop'><Link to={`/payment/${item.film._id}`}>Shopping</Link></button>
                                     </td>
                                 </tr>
                             ))}
