@@ -665,11 +665,13 @@ h5.actorName {
   padding: 11px;
   font-family: monospace;
   font-size: 19px;
-  background: #00abc9;
+  background: #c743ffb1;
 }
 .cartItemBody {
-  background: #2b2a28;
+  background: transparent;
   font-size: 17px;
+  font-weight: 600;
+  color: #000000 !important;
 }
 .cartItemBodytd {
   padding: 2px;

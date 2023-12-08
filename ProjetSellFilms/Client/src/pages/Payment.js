@@ -1,12 +1,9 @@
-import React, { useEffect, useState, } from 'react';
+import React, { useState, } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import GetFilm from '../component/Utility/GetFilm';
 import ProductCard from '../component/Prodacts/ProductCard';
 import axios from 'axios';
 import { baseUrl } from '../component/Utility/Constant';
-// import axios from 'axios';
-// import { baseUrl } from './Utility/Constant';
-
 
 const Payment = () => {
     const navigate = useNavigate();
