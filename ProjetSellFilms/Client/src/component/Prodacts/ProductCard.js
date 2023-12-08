@@ -3,7 +3,7 @@ import { baseUrl } from "../Utility/Constant";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const ProductCard = ({ id, image, name, prix, stars, disc }) => {
+const ProductCard = ({ PriceShop, id, image, name, prix, stars, disc }) => {
     const [msg, setMsg] = useState();
     const [notif, setNotif] = useState(false);
     const notifShow = () => {
@@ -21,7 +21,7 @@ const ProductCard = ({ id, image, name, prix, stars, disc }) => {
         axios.post(`${baseUrl}cartitems`, formData, {
             headers: { 'Content-Type': 'application/json' },
         }).then((response) => {
-            console.log(response); 
+            console.log(response);
             setMsg(response.data.msg);
             notifShow();
         }).catch((err) => {
@@ -30,6 +30,9 @@ const ProductCard = ({ id, image, name, prix, stars, disc }) => {
     }
     return (
         <>
+            {PriceShop ? (
+                <h2 className='PayPrice'>Totale : {prix}$$ </h2>
+            ) : null}
             <div className="The_product">
                 <div className="Product_card">
                     <div className="Poducat_img">

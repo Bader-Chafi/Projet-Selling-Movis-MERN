@@ -1,17 +1,21 @@
-import React, { useState, } from 'react';
+import React, { useEffect, useState, } from 'react';
 import { useParams } from 'react-router-dom';
 import GetFilm from './Utility/GetFilm';
 import ProductCard from './Prodacts/ProductCard';
+import axios from 'axios';
+import { baseUrl } from './Utility/Constant';
 // import axios from 'axios';
 // import { baseUrl } from './Utility/Constant';
 
 
 const Payment = () => {
     const { id } = useParams();
-    const [filmData, setFilmData] = useState(null);
+    const [filmData, setFilmData] = useState('');
+    GetFilm(id, setFilmData);
+    const [msg, setMsg] = useState();
+    const [error, setError] = useState({});
+    const [errNotif, setErrNotif] = useState(true);
     const [userPayData, setUserPayData] = useState({
-        filmId: '',
-        price: '',
         fullName: '',
         phoneNumber: '',
         cartNumber: '',
@@ -20,18 +24,12 @@ const Payment = () => {
         email: '',
         country: '',
     });
-    const [error, setError] = useState({});
-    const [errNotif, setErrNotif] = useState(true);
-
-    GetFilm(id, setFilmData);
-
     const showError = () => {
         setErrNotif(true);
         setTimeout(() => {
             setErrNotif(false);
-        },90000000);
+        }, 90000000);
     };
-
     const validateForms = () => {
         const newError = {}; // Initialize an empty error object
         if (userPayData.fullName === '') {
@@ -59,23 +57,33 @@ const Payment = () => {
         setError(newError);
         return Object.keys(newError).length === 0;
     };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const isValid = validateForms();
         if (isValid) {
-            console.log('success');
+            axios.post(`${baseUrl}payment`, userPayData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(response => {
+                    setMsg(response.msg)
+                })
+                .catch(err => console.log(err))
+            console.log({ msg: 'success', data: userPayData });
         } else {
             console.log(error);
             showError();
         }
     };
-    
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setUserPayData({
             ...userPayData,
             [name]: value,
+            price: filmData.price,
+            film: filmData._id,
+            user: window.localStorage.getItem('user_id'),
         });
         // Clear the error for the current field
         setError({
@@ -83,14 +91,19 @@ const Payment = () => {
             [name]: '',
         });
     };
-    return (
+    return (<>
+        {msg.length >= 0 && <div className='bg-succes RegisterAlert' >
+            <i class='bx bx-user-check' ></i>
+            Payment Successfuly
+        </div>}
         <div className='Payment container'>
             <div className='PayFilm'>
                 {filmData &&
                     <>
-                        <h2 className='PayPrice'>Totale : {filmData.price}$$ </h2>
+
                         <ProductCard
                             id={filmData.id}
+                            PriceShop={true}
                             image={filmData.imageCover}
                             name={filmData.title}
                             prix={filmData.price}
@@ -143,7 +156,7 @@ const Payment = () => {
                                 required
                                 placeholder="123"
                                 name='cvc' />
-                                {errNotif && <p className="PayError">{error.cvc}</p>}
+                            {errNotif && <p className="PayError">{error.cvc}</p>}
                         </div>
                         <div>
                             <label className="PayLabel" htmlFor="date">Date</label>
@@ -153,8 +166,8 @@ const Payment = () => {
                                 value={userPayData.date}
                                 type="text" className='InputName'
                                 required placeholder='12/25'
-                                name='date' style={{'width':'133px'}}/> 
-                                {errNotif && <p className="PayError">{error.date}</p>}
+                                name='date' style={{ 'width': '133px' }} />
+                            {errNotif && <p className="PayError">{error.date}</p>}
                         </div>
                         <div className="PayFilds">
                             <label className="PayLabel" htmlFor="phoneNumber">Phone Number</label>
@@ -206,7 +219,7 @@ const Payment = () => {
                 </form>
             </div>
         </div>
-    )
+    </>)
 }
 
 export default Payment; 

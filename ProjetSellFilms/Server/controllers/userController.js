@@ -35,6 +35,8 @@ exports.createUser = asyncHandler(async (req, res) => {
 });
 
 
+
+
 exports.loginUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
     const user = await userModel.findOne({ email });
@@ -120,3 +122,4 @@ exports.deleteUser = asyncHandler(async (req, res, next) => {
     }
     res.status(200).send(`User ${User.userName} deleted`);
 })
+

@@ -14,6 +14,7 @@ const filmRoute = require('./routes/filmRoute');
 const loginRoute = require('./routes/loginRoute');
 const uploadRoute = require('./routes/uploadRoute');
 const adminRoute = require('./routes/adminRoute');
+const cartShopRoute = require('./routes/cartShopRoute');
 const path = require('path');
 const cors = require('cors');
 const searchFilmRoute = require('./routes/searchFilmRoute');
@@ -49,6 +50,7 @@ app.use('/api/v1/films', filmRoute);
 app.use('/api/v1/upload', uploadRoute)
 app.use('/api/v1/uploads', express.static(path.join(__dirname, 'images')));
 app.use('/api/v1/searchfilm', searchFilmRoute);
+app.use('/api/v1/payment',cartShopRoute)
 
 
 // Mounte Routes
