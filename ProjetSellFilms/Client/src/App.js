@@ -12,7 +12,8 @@ import FakeAdmin from "./pages/Admin/FakeAdmin";
 import Profile from "./pages/Profile";
 import Product from "./pages/Products/Product";
 import CartItemUser from "./component/cartItem/CartItemsUser";
-import Payment from "./component/Payment";
+import Payment from "./pages/Payment";
+import PaymentCard from "./pages/PaymentCard";
 
 function App() {
   const typeUser = window.localStorage.getItem('typeUser');
@@ -30,7 +31,8 @@ function App() {
               <Route path="all_category" element={<AllCategory />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/cartItems" element={<CartItemUser />} />
-              <Route path="/payment/:id" element={<Payment />} />
+              <Route path="/payment/:id" element={<Payment />} />/item_shop
+              <Route path="/item_shop" element={<PaymentCard />} />
 
             </> :
               <>

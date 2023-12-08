@@ -1,18 +1,27 @@
 import React, { useEffect, useState, } from 'react';
-import { useParams } from 'react-router-dom';
-import GetFilm from './Utility/GetFilm';
-import ProductCard from './Prodacts/ProductCard';
+import { useNavigate, useParams } from 'react-router-dom';
+import GetFilm from '../component/Utility/GetFilm';
+import ProductCard from '../component/Prodacts/ProductCard';
 import axios from 'axios';
-import { baseUrl } from './Utility/Constant';
+import { baseUrl } from '../component/Utility/Constant';
 // import axios from 'axios';
 // import { baseUrl } from './Utility/Constant';
 
 
 const Payment = () => {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [filmData, setFilmData] = useState('');
     GetFilm(id, setFilmData);
     const [msg, setMsg] = useState();
+    const [messagnotif, setMessagNotif] = useState(false);
+    const showMessag = () => {
+        setMessagNotif(true);
+        setTimeout(() => {
+            setMessagNotif(false);
+            navigate('/item_shop')
+        }, 3000);
+    };
     const [error, setError] = useState({});
     const [errNotif, setErrNotif] = useState(true);
     const [userPayData, setUserPayData] = useState({
@@ -65,12 +74,11 @@ const Payment = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 }
+            }).then(res => {
+                setMsg(res.data.msg);
+                showMessag()
+                console.log(res.data.msg);
             })
-                .then(response => {
-                    setMsg(response.msg)
-                })
-                .catch(err => console.log(err))
-            console.log({ msg: 'success', data: userPayData });
         } else {
             console.log(error);
             showError();
@@ -92,10 +100,11 @@ const Payment = () => {
         });
     };
     return (<>
-        {msg.length >= 0 && <div className='bg-succes RegisterAlert' >
-            <i class='bx bx-user-check' ></i>
-            Payment Successfuly
-        </div>}
+        {
+            messagnotif && <div className='bg-succes RegisterAlert'>
+                <i className='bx bx-credit-card me-2' style={{ 'fontSize': '23px' }} ></i>
+                {msg}
+            </div>}
         <div className='Payment container'>
             <div className='PayFilm'>
                 {filmData &&

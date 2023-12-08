@@ -4,9 +4,11 @@ const cartCreditModel = require('../models/cartCreditModel');
 
 
 exports.addPaymentCredit = asyncHandler(async (req, res) => {
-    const {user, film} = req.body;
-    const addPay = await cartShopModel.findOne({ user, film});
-    if (!addPay) {
+    const { user, film } = req.body;
+    const addPay = await cartShopModel.findOne({ user, film });
+    if (addPay) {
+        return res.status(200).send({ msg: 'You Have alredy this Payment Film', data: addPay });
+    } else {
         const payment = await cartShopModel.create({
             user: req.body.user,
             film: req.body.film,
@@ -19,13 +21,10 @@ exports.addPaymentCredit = asyncHandler(async (req, res) => {
             price: req.body.price,
             country: req.body.country,
         });
-        if (!payment) {
-            res.status(404).send({ msg: 'Payment Unsuccessful', data: payment })
-        }
-        res.status(200).send({ msg: 'Payment Successful', data: payment });
-    } else {
-        res.status(200).send({ msg: 'You Have alredy this Payment Film', data: addPay });
+        return res.status(200).send({ msg: 'Payment Successfuly', data: payment });
     }
+
+
 })
 
 exports.getAllPayment = asyncHandler(async (req, res) => {
@@ -35,7 +34,7 @@ exports.getAllPayment = asyncHandler(async (req, res) => {
         res.status(201).send({ msg: 'You dant have any Payment' });
     }
     res.status(200).send({ length: getPayment.length, data: getPayment });
-}); 
+});
 
 exports.updateStatusPayment = asyncHandler(async (req, res) => {
     const { peymentId } = req.params;
@@ -44,16 +43,16 @@ exports.updateStatusPayment = asyncHandler(async (req, res) => {
         res.status(201).send({ msg: 'You dant have any Payment' });
     }
     res.status(200).send({ length: getPayment.length, data: getPayment });
-}); 
+});
 
 exports.addCreditCard = asyncHandler(async (req, res) => {
-    const {user} = req.body;
-    const findCart = await cartCreditModel.findOne({user});
+    const { user } = req.body;
+    const findCart = await cartCreditModel.findOne({ user });
     if (findCart.length > 0) {
-        return res.status(500).send({ msg:'You Have alredy this card', data:findCart });
-    }else {
+        return res.status(500).send({ msg: 'You Have alredy this card', data: findCart });
+    } else {
         const addCreditCard = await cartCreditModel.create(req.body)
-        return res.status(201).send({ msg: 'Add Cart Credit Successfuly', data:addCreditCard });
+        return res.status(201).send({ msg: 'Add Cart Credit Successfuly', data: addCreditCard });
     }
 
 });

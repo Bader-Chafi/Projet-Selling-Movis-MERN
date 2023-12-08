@@ -5,6 +5,7 @@ const Film = require('../../models/filmModel');
 const User = require('../../models/userModel');
 const Admin = require('../../models/adminModel');
 const dbConnection = require('../../config/database');
+const cartShopModel = require('../../models/cartShopModel');
 
 dotenv.config({ path: '../../config.env' });
 
@@ -15,7 +16,7 @@ dbConnection();
 const films = JSON.parse(fs.readFileSync("./films.json"));
 
 
-// Insert data into DB
+// Insert data film
 const insertData = async () => {
   try {
     await Film.create(films);
@@ -27,7 +28,7 @@ const insertData = async () => {
   }
 };
 
-// Delete data from DB
+// Delete film
 const destroyData = async () => {
   try {
     await Film.deleteMany();
@@ -38,7 +39,7 @@ const destroyData = async () => {
   }
 };
 
-// Delete data from DB user
+// Delete user
 const destroyUserData = async () => {
   try {
     await User.deleteMany();
@@ -48,7 +49,7 @@ const destroyUserData = async () => {
     console.log(error);
   }
 };
-// Delete data from DB user
+// Delete admin
 const destroyAdminData = async () => {
   try {
     await Admin.deleteMany();
@@ -58,7 +59,16 @@ const destroyAdminData = async () => {
     console.log(error);
   }
 };
-
+// Delete cartSHop
+const destroycartShop = async () => {
+  try {
+    await cartShopModel.deleteMany();
+    console.log('Data Destroyed'.red.inverse);
+    process.exit();
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // node seeder.js -i
 if (process.argv[2] === '-i') {
@@ -70,4 +80,6 @@ if (process.argv[2] === '-i') {
   destroyUserData();
 } else if (process.argv[2] === '-deleteAdmins') {
   destroyAdminData();
+} else if (process.argv[2] === '-c') {
+  destroycartShop();
 }
