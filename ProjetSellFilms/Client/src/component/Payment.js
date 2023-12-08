@@ -70,6 +70,7 @@ const Payment = () => {
             showError();
         }
     };
+    
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setUserPayData({
