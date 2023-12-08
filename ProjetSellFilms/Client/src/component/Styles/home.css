@@ -715,12 +715,13 @@ h1.LoginData {
   display: flex;
   font-family: monospace;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 .PayFilm {
   align-self: center;
 }
 h2.PayPrice {
-  font-size: 38px;
+  font-size: 28px;
   color: greenyellow;
 }
 .PayForm {
@@ -730,7 +731,6 @@ h2.PayPrice {
   width: 588px;
   display: flex;
   flex-direction: column;
-  height: 607px;
   justify-content: space-between;
   padding: 30px;
 }
@@ -757,8 +757,17 @@ input.InputName:focus {
 }
 .PayFilds.CDate {
   display: flex;
-  flex-direction: row-reverse;
   justify-content: space-between;
+  flex-direction: row;
+}
+.CDate div {
+  display: flex;
+  flex-direction: column;
+}
+.CDate input[type="number"] {
+  appearance: none;
+  width: 133px;
+  text-align: center;
 }
 input.InputName {
   border: none;
@@ -778,6 +787,14 @@ button.btnPayShop {
   border: none;
   background: #4fe7ff;
   text-transform: capitalize;
+}
+.PayError {
+  color: #f11919;
+  width: -webkit-fill-available;
+  text-align: unset;
+  font-family: sans-serif;
+  font-size: 17px;
+  font-weight: 700;
 }
 
 /* End Payment Page */
