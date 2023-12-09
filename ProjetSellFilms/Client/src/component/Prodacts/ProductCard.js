@@ -21,7 +21,6 @@ const ProductCard = ({ PriceShop, id, image, name, prix, stars, disc }) => {
         axios.post(`${baseUrl}cartitems`, formData, {
             headers: { 'Content-Type': 'application/json' },
         }).then((response) => {
-            console.log(response);
             setMsg(response.data.msg);
             notifShow();
         }).catch((err) => {

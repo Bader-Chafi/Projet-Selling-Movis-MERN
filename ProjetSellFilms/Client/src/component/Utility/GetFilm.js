@@ -15,7 +15,7 @@ const GetFilm = (filmid, setData) => {
             }
         };
         fetchData()
-    }, []);
+    }, [filmid,setData]);
 
 };
 

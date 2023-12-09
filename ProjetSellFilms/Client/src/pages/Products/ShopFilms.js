@@ -8,7 +8,6 @@ const ShopFilms = () => {
     const handlePageChange = (selectedPage) => {
         setCurrentPage(selectedPage);
     };
-    console.log(currentPage)
     return (
         <div className='all-product' style={{}}>
             <Container>

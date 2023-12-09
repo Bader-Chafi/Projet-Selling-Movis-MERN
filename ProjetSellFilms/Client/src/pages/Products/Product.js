@@ -35,7 +35,7 @@ const Product = () => {
             }
         };
         fetchData();
-    }, []);
+    }, [id,filds]);
     // add panier
     const [msg, setMsg] = useState();
     const [notif, setNotif] = useState(false);

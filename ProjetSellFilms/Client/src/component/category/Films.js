@@ -30,7 +30,6 @@ const Films = (limit, page) => {
         fetchData(`${baseUrl}categories/?limit=20`, setCategories)
         fetchData(`${baseUrl}dates`, setDate)
         fetchData(`${baseUrl}sections`, setSection)
-        console.log(page)
         // Perform search when the setserchTitle changes
         if (serchTitle.trim() !== '' || category !== '' || section !== '' || date !== '') {
             // Call your search API endpoint with the setserchTitle

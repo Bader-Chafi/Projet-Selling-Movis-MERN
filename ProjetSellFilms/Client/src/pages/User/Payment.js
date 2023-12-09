@@ -1,9 +1,9 @@
 import React, { useState, } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import GetFilm from '../component/Utility/GetFilm';
-import ProductCard from '../component/Prodacts/ProductCard';
+import GetFilm from '../../component/Utility/GetFilm';
+import ProductCard from '../../component/Prodacts/ProductCard';
 import axios from 'axios';
-import { baseUrl } from '../component/Utility/Constant';
+import { baseUrl } from '../../component/Utility/Constant';
 
 const Payment = () => {
     const navigate = useNavigate();
@@ -96,6 +96,7 @@ const Payment = () => {
             [name]: '',
         });
     };
+    
     return (<>
         {
             messagnotif && <div className='bg-succes RegisterAlert'>

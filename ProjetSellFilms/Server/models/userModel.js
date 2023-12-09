@@ -13,6 +13,11 @@ const userSchema = new mongoose.Schema(
             index: true,
             unique: [true,'this email is already used'],
         },
+        image: {
+            type: String,
+            required: true,
+            default: 'profile.jpg'
+        },
         password: {
             type: String,
             required: true,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { baseUrl } from "../component/Utility/Constant";
+import { baseUrl } from "../../component/Utility/Constant";
 import axios from "axios";
 
 const PaymentCard = () => {

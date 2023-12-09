@@ -51,7 +51,7 @@ const Navbar = () => {
               {user ? (
                 <ul className="user">
                   <li className="nav-item">{user.userName}</li>
-                  <li><Link to="/profile">Profile</Link></li>
+                  <li><Link to="/profileUser">Profile</Link></li>
                   <li onClick={removeCokies}>LogOut</li>
                 </ul>
               ) : <p className="loading">Loding Data ....</p>}

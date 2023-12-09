@@ -9,11 +9,11 @@ import ShopProducts from "./pages/Products/ShopFilms";
 import AdminPage from "./pages/Admin/AdminPage";
 import AllCategory from "./component/category/AllCategory";
 import FakeAdmin from "./pages/Admin/FakeAdmin";
-import Profile from "./pages/Profile";
 import Product from "./pages/Products/Product";
 import CartItemUser from "./component/cartItem/CartItemsUser";
-import Payment from "./pages/Payment";
-import PaymentCard from "./pages/PaymentCard";
+import Payment from './pages/User/Payment'
+import PaymentCard from './pages/User/PaymentCard'
+import ProfileUser from "./pages/User/ProfileUser";
 
 function App() {
   const typeUser = window.localStorage.getItem('typeUser');
@@ -29,9 +29,9 @@ function App() {
               <Route path="/ShopFilms" element={<ShopProducts />} />
               <Route path="/ShopFilms/:id" element={<Product />} />
               <Route path="all_category" element={<AllCategory />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/profileUser" element={<ProfileUser />} />
               <Route path="/cartItems" element={<CartItemUser />} />
-              <Route path="/payment/:id" element={<Payment />} />/item_shop
+              <Route path="/payment/:id" element={<Payment />} />/
               <Route path="/item_shop" element={<PaymentCard />} />
 
             </> :
