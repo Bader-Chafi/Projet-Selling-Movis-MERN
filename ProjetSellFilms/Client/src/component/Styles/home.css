@@ -807,6 +807,7 @@ button.btnPayShop {
   display: flex;
   position: relative;
   z-index: 10000;
+  min-height: 100vh;
 }
 .PrifileNav {
   display: flex;
@@ -837,8 +838,6 @@ li.ListLi {
   padding: 6px;
   border-radius: 57px;
 }
-
-
 .ProfileContent {
   width: 76%;
   margin: auto;
