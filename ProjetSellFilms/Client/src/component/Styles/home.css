@@ -311,6 +311,7 @@ img.titlePG_image {
 
 .allCard {
   position: relative;
+  margin: 7px 0;
 }
 
 .category-card-img {
@@ -580,11 +581,8 @@ button.btn.Acheter a:hover {
 .FilmDiscription {
   margin-top: 16px;
 }
-table {
-  caption-side: bottom;
-  width: 100%;
-  border-collapse: collapse;
-}
+
+
 .filmField {
   display: flex;
   width: 100%;
@@ -653,28 +651,32 @@ h5.actorName {
 /* end Product Page */
 
 /*Start CartItemds */
+.ProfileContent {
+  width: 76%;
+  margin: auto;
+}
+
 .cartItems {
   margin: 27px 0;
   text-align: center;
 }
-.cardItemsTable {
-  table-layout: fixed;
-  /* border: 1px red solid; */
-}
-.cartItemHead tr th {
-  padding: 11px;
-  font-family: monospace;
-  font-size: 19px;
-  background: #c743ffb1;
-}
 .cartItemBody {
-  background: transparent;
-  font-size: 17px;
-  font-weight: 600;
-  color: #000000 !important;
+  display: flex;
+  flex-direction: column;
+  margin-top: 23px;
 }
-.cartItemBodytd {
-  padding: 2px;
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  margin-top: 4px;
+  padding: 4px 11px 4px 30px;
+  border-radius: 61px;
+  background: #0000005c;
+}
+.cartItem:hover {
+  background: #8ae83d5c;
 }
 .removeItem,
 .ShopItem {
@@ -682,17 +684,28 @@ h5.actorName {
   font-weight: 700;
   width: 115px;
   font-family: sans-serif;
+  border: none;
   border-radius: 49px;
-  border: 4px dotted #fdf8ff;margin: 2px;
+  /* border: 4px dotted #fdf8ff; */
+  margin: 2px;
 }
 .ShopItem {
-  box-shadow: 0px 0px 18px 4px rgb(62, 228, 240);
+  /* box-shadow: 0px 0px 18px 4px rgb(62, 228, 240); */
   color: #20cbff;
-  background: rgb(82, 104, 248)55, 255, 255);
 }
-
+.ShopItem:hover {
+  background: rgb(82, 104, 248);
+}
+.ShopItem a {
+  color: rgb(24, 144, 165);
+  text-transform: capitalize;
+  text-decoration: none;
+}
+button.ShopItem.btn-shop:hover a {
+  color: white;
+}
 .removeItem {
-  box-shadow: 0px 0px 18px 4px #b73d3d;
+  /* box-shadow: 0px 0px 18px 4px #f82e2e; */
   color: #ff2020;
   background: white;
 }
@@ -710,7 +723,6 @@ h1.LoginData {
   align-items: center;
   justify-content: space-around;
 }
-
 
 /* START Payment Page */
 .Payment.container {
@@ -797,10 +809,9 @@ button.btnPayShop {
   font-family: sans-serif;
   font-size: 17px;
   font-weight: 700;
-} 
+}
 
 /* End Payment Page */
-
 
 /* profil ana nav */
 .Profile {
@@ -831,11 +842,12 @@ ul.NavList {
   width: 222px;
   height: 65vh;
   padding: 0;
-}  
+}
 li.ListLi {
   background: red;
   margin: 14px 8px 0;
   padding: 6px;
+  cursor: pointer;
   border-radius: 57px;
 }
 .ProfileContent {

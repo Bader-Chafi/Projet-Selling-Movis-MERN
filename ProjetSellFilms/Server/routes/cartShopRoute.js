@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const {addPaymentCredit,getAllPayment} = require('../controllers/cartShopController')
+const { addPaymentCredit, getAllPaymentUser, getAllPayment, updateStatusPayment } = require('../controllers/cartShopController')
 
 router.route('/')
-.post(addPaymentCredit)
+    .post(addPaymentCredit)
+    .get(getAllPayment);
 
-router.route('/:userId')
-.get(getAllPayment)
+router.route('/:id')
+    .get(getAllPaymentUser)
+    .put(updateStatusPayment)
+
 
 
 

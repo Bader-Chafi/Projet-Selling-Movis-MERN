@@ -34,6 +34,7 @@ const AddMovis = () => {
         sold: "",
         description: "",
     });
+    console.log(postData)
     const [showNotification, setShowNotification] = useState(false);
     const showSuccessNotification = () => {
         setShowNotification(true);
@@ -111,7 +112,7 @@ const AddMovis = () => {
     };
 
     return (
-        <div className="bg-secondary col-10">
+        <div className="col-10">
             <form className="AddMovis text-light">
                 <fieldset className="d-flex row justify-content-center">
                     {/* <!-- Form Name --> */}
@@ -213,7 +214,7 @@ const AddMovis = () => {
                                     placeholder="Price Films"
                                     className="form-control"
                                     required=""
-                                    type="number"
+                                    type="text"
                                 />
                             </td>
                         </tr>

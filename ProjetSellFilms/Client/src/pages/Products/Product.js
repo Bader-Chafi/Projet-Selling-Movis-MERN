@@ -35,7 +35,7 @@ const Product = () => {
             }
         };
         fetchData();
-    }, [id,filds]);
+    }, []);
     // add panier
     const [msg, setMsg] = useState();
     const [notif, setNotif] = useState(false);
@@ -74,7 +74,7 @@ const Product = () => {
                             </div>
                             <div className="FilmInfo">
                                 <div className="info">
-                                    <table className=''>
+                                    <table className='' width='100%'>
                                         <tbody>
                                             {filds.map((fild, key) => {
                                                 return (

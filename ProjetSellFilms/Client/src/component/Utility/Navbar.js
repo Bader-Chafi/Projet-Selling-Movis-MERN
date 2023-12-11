@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [Mobile, setMobile] = useState(true);
   const [cookies, setCookies] = useCookies('access_token');
+  const typeUser = window.localStorage.getItem('typeUser');
   const navigate = useNavigate();
   const removeCokies = () => {
     setCookies('access_token', '');
@@ -51,7 +52,7 @@ const Navbar = () => {
               {user ? (
                 <ul className="user">
                   <li className="nav-item">{user.userName}</li>
-                  <li><Link to="/profileUser">Profile</Link></li>
+                  {typeUser === 'Admin' ? <li><Link to="/profiladmin">Profile</Link></li> : <li><Link to="/profileUser">Profile</Link></li>}
                   <li onClick={removeCokies}>LogOut</li>
                 </ul>
               ) : <p className="loading">Loding Data ....</p>}

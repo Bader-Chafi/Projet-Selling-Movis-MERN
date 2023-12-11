@@ -28,8 +28,16 @@ exports.addPaymentCredit = asyncHandler(async (req, res) => {
 })
 
 exports.getAllPayment = asyncHandler(async (req, res) => {
-    const { userId } = req.params;
-    const getPayment = await cartShopModel.find({ user: userId });
+    const getPayment = await cartShopModel.find();
+    if (!getPayment) {
+        res.status(201).send({ msg: 'You dant have any Payment' });
+    }
+    res.status(200).send({ length: getPayment.length, data: getPayment });
+});
+
+exports.getAllPaymentUser = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const getPayment = await cartShopModel.find({ user: id });
     if (!getPayment) {
         res.status(201).send({ msg: 'You dant have any Payment' });
     }
@@ -37,8 +45,11 @@ exports.getAllPayment = asyncHandler(async (req, res) => {
 });
 
 exports.updateStatusPayment = asyncHandler(async (req, res) => {
-    const { peymentId } = req.params;
-    const getPayment = await cartShopModel.find({ user: userId });
+    const { id } = req.params;
+    const getPayment = await cartShopModel.findByIdAndUpdate(
+        { _id: id },
+        { $set: { status: req.body.status } }, // Replace 'UpdatedStatus' with the new status
+        { new: true });
     if (!getPayment) {
         res.status(201).send({ msg: 'You dant have any Payment' });
     }

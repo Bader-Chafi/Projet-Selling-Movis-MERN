@@ -19,7 +19,7 @@ const HomeHeader = () => {
                     <SubTitle liens='/all_category' title='CATEGORY' btnTitle='SHOW MORE' />
                 </Container>
             </div>
-            <div className="container d-flex justify-content-between">
+            <div className="container d-flex justify-content-between felx-md-center flex-wrap">
                 {categories.map((category) => (
                     <CategoryCard
                         key={category._id}

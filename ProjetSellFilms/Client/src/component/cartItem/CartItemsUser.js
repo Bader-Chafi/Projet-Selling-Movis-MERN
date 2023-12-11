@@ -47,47 +47,36 @@ const CartItemUser = () => {
     // shop items
 
     return (
-        <div className='cartItems'>
+        <div className='cartItems container'>
             <div className='tableCard'>
                 {/* Notification deleted */}
                 {notif &&
                     <div className='alert alert-success position-absolute top-15 w-50' style={{ 'right': '25%' }}>
                         {msg}
                     </div>}
-                {cartData.length > 0 ? <>
-                    <div className='container d-flex justify-content-between'>
-                        <h1 className='text-start text-light'>ALL film You like it</h1>
-                        <button className='removeItem btn-Delete' onClick={() => handleBtnRemove()} >Delete ALL</button>
-                    </div>
-                    <table className='text-light container cardItemsTable'>
-                        <thead className='cartItemHead'>
-                            <tr>
-                                <th>Image Cover</th>
-                                <th>Title</th>
-                                <th width='100px'>Price</th>
-                                <th width='100px'>Sold</th>
-                                <th>Ratings Average</th>
-                                <th>Methode</th>
-                            </tr>
-                        </thead>
-                        <tbody className='cartItemBody'>
+                {cartData.length > 0 ?
+                    <>
+                        <div className='container d-flex justify-content-between'>
+                            <h1 className='text-start text-light'>ALL film Want It :::  {cartData.length}</h1>
+                            <button className='removeItem btn-Delete' onClick={() => handleBtnRemove()} >Delete ALL</button>
+                        </div>
+                        <div className='cartItemBody'>
                             {cartData.map(item => (
-                                <tr key={item._id} className=''>
-                                    <td><img src={`${baseUrl}uploads/${item.film.imageCover}`} width='50px' alt={item.film.imageCover} /></td>
-                                    <td><Link to={`/ShopFilms/${item.film._id}`} className='nav-link'>*{item.film.title}*</Link></td>
-                                    <td>{item.film.price}$$</td>
-                                    <td>{item.film.sold}Viewer</td>
-                                    <td>{item.film.ratingsAverage}<i className="fa-solid fa-star text-warning" color="red"></i></td>
-                                    <td>
+                                <div key={item._id} className='cartItem'>
+                                    <span><img src={`${baseUrl}uploads/${item.film.imageCover}`} width='50px' alt={item.film.imageCover} /></span>
+                                    <span><Link to={`/ShopFilms/${item.film._id}`} className='nav-link'>*{item.film.title}*</Link></span>
+                                    <span>{item.film.price}$$</span>
+                                    <span>{item.film.sold}Viewer</span>
+                                    <span>{item.film.ratingsAverage}<i className="fa-solid fa-star text-warning" color="red"></i></span>
+                                    <span width='300px'>
                                         <button className='removeItem btn-Delete' onClick={() => { handleBtnRemove(item.film._id) }}>Delete</button>
                                         <button className='ShopItem btn-shop'><Link to={`/payment/${item.film._id}`}>Shopping</Link></button>
-                                    </td>
-                                </tr>
+                                    </span>
+                                </div>
                             ))}
-                        </tbody>
-                    </table>
-                </>
-                    : <h1 className='text-light'>You have not Any Films Cart</h1>
+                        </div>
+                    </>
+                    : <h1 className='text-light'>You have not Any Film In Your Cart Items</h1>
                 }
             </div>
 

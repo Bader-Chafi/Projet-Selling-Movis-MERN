@@ -48,7 +48,7 @@ function App() {
           {/* the all user whith type user not can going to the page admin */}
           {
             typeUser === 'Admin' ?
-              <Route path="/admin" element={<AdminPage />} />
+              <Route path="/profiladmin" element={<AdminPage />} />
               : <Route path="/admin" element={<FakeAdmin />} />
           }
         </Routes>
